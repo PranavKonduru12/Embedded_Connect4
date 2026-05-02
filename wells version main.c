@@ -1,454 +1,439 @@
-#include "EDK_CM0.h"
-#include "core_cm0.h"
-#include "edk_driver.h"
-#include "edk_api.h"
-#include <stdio.h>
-#include <stdint.h>
+//////////////////////////////////////////////////////////////////////////////////
+//END USER LICENCE AGREEMENT                                                    //
+//                                                                              //
+//Copyright (c) 2012, ARM All rights reserved.                                  //
+//                                                                              //
+//THIS END USER LICENCE AGREEMENT ("LICENCE") IS A LEGAL AGREEMENT BETWEEN      //
+//YOU AND ARM LIMITED ("ARM") FOR THE USE OF THE SOFTWARE EXAMPLE ACCOMPANYING  //
+//THIS LICENCE. ARM IS ONLY WILLING TO LICENSE THE SOFTWARE EXAMPLE TO YOU ON   //
+//CONDITION THAT YOU ACCEPT ALL OF THE TERMS IN THIS LICENCE. BY INSTALLING OR  //
+//OTHERWISE USING OR COPYING THE SOFTWARE EXAMPLE YOU INDICATE THAT YOU AGREE   //
+//TO BE BOUND BY ALL OF THE TERMS OF THIS LICENCE. IF YOU DO NOT AGREE TO THE   //
+//TERMS OF THIS LICENCE, ARM IS UNWILLING TO LICENSE THE SOFTWARE EXAMPLE TO    //
+//YOU AND YOU MAY NOT INSTALL, USE OR COPY THE SOFTWARE EXAMPLE.                //
+//                                                                              //
+//ARM hereby grants to you, subject to the terms and conditions of this Licence,//
+//a non-exclusive, worldwide, non-transferable, copyright licence only to       //
+//redistribute and use in source and binary forms, with or without modification,//
+//for academic purposes provided the following conditions are met:              //
+//a) Redistributions of source code must retain the above copyright notice, this//
+//list of conditions and the following disclaimer.                              //
+//b) Redistributions in binary form must reproduce the above copyright notice,  //
+//this list of conditions and the following disclaimer in the documentation     //
+//and/or other materials provided with the distribution.                        //
+//                                                                              //
+//THIS SOFTWARE EXAMPLE IS PROVIDED BY THE COPYRIGHT HOLDER "AS IS" AND ARM     //
+//EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING     //
+//WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR //
+//PURPOSE, WITH RESPECT TO THIS SOFTWARE EXAMPLE. IN NO EVENT SHALL ARM BE LIABLE/
+//FOR ANY DIRECT, INDIRECT, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES OF ANY/
+//KIND WHATSOEVER WITH RESPECT TO THE SOFTWARE EXAMPLE. ARM SHALL NOT BE LIABLE //
+//FOR ANY CLAIMS, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, //
+//TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE    //
+//EXAMPLE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE EXAMPLE. FOR THE AVOIDANCE/
+// OF DOUBT, NO PATENT LICENSES ARE BEING LICENSED UNDER THIS LICENSE AGREEMENT.//
+//////////////////////////////////////////////////////////////////////////////////
 
-/*
- * Connect Four
+module AHBLITE_SYS(
+    input  wire          CLK,                // Oscillator - 100MHz
+    input  wire          RESET,              // Reset
+
+    // TO BOARD LEDs
+    output wire    [7:0] LED,
+
+    
+   // VGA IO
+    output wire    [2:0] vgaRed,
+    output wire    [2:0] vgaGreen,
+    output wire    [1:0] vgaBlue,
+    output wire          Hsync,          // VGA Horizontal Sync
+    output wire          Vsync,          // VGA Vertical Sync
+   
+    // TO UART
+    input  wire          RsRx,
+    output wire          RsTx,
+
+	// Switch Inputs
+    input  wire    [7:0] sw,
+    
+    // 7 Segment display
+    output wire    [6:0] seg,
+    output wire          dp,
+    output wire    [3:0] an//,
+
+    
+    // Debug
+   // input  wire          TDI,                // JTAG TDI
+    //input  wire          TCK,                // SWD Clk / JTAG TCK
+    //inout  wire          TMS,                // SWD I/O / JTAG TMS
+    //output wire          TDO                 // SWV     / JTAG TDO
+    );
+
+    // Clock
+    wire          fclk;                      // Free running clock
+    // Reset
+    wire          reset_n = !RESET;
+	
+    // Select signals
+    wire    [3:0] mux_sel;
+
+    wire          hsel_mem;
+    wire          hsel_led;
+    wire          hsel_vga;
+    wire          hsel_uart;
+    wire          hsel_gpio;
+    wire          hsel_timer;
+    wire          hsel_7seg;
+
+    // Slave read data
+    wire   [31:0] hrdata_mem;
+    wire   [31:0] hrdata_led;
+    wire   [31:0] hrdata_vga;
+    wire   [31:0] hrdata_uart;
+    wire   [31:0] hrdata_gpio;
+    wire   [31:0] hrdata_timer;
+    wire   [31:0] hrdata_7seg;
+
+
+    // Slave hready
+    wire          hready_mem;
+    wire          hready_led;
+    wire          hready_vga;
+    wire          hready_uart;
+    wire          hready_gpio;
+    wire          hready_timer;
+    wire          hready_7seg;
+
+    // CM-DS Sideband signals
+    wire          lockup;
+    wire          lockup_reset_req;
+    wire          sys_reset_req;
+    wire          txev;
+    wire          sleeping;
+    wire  [31:0]  irq;
+    
+
+    // Interrupt signals
+    	wire          uart_irq;
+        wire          timer_irq;
+        assign        irq = {30'b0,uart_irq,timer_irq};
+    // assign        LED[7] = lockup;
+    
+	  // Clock divider, divide the frequency by two, hence less time constraint 
+    reg clk_div;
+    always @(posedge CLK)
+    begin
+        clk_div=~clk_div;
+    end
+    BUFG BUFG_CLK (
+        .O(fclk),
+        .I(clk_div)
+    );
+    
+    // Reset synchronizer
+    reg  [4:0]     reset_sync_reg;
+    always @(posedge fclk or negedge reset_n)
+    begin
+        if (!reset_n)
+            reset_sync_reg <= 5'b00000;
+        else
+        begin
+            reset_sync_reg[3:0] <= {reset_sync_reg[2:0], 1'b1};
+            reset_sync_reg[4] <= reset_sync_reg[2] & (~sys_reset_req);
+        end
+    end
+
+    // CPU System Bus
+    wire          hresetn = reset_sync_reg[4];
+    wire   [31:0] haddrs; 
+    wire    [2:0] hbursts; 
+    wire          hmastlocks; 
+    wire    [3:0] hprots; 
+    wire    [2:0] hsizes; 
+    wire    [1:0] htranss; 
+    wire   [31:0] hwdatas; 
+    wire          hwrites; 
+    wire   [31:0] hrdatas; 
+    wire          hreadys; 
+    wire    [1:0] hresps = 2'b00;            // System generates no error response
+    wire          exresps = 1'b0;
+
+    // Debug signals (TDO pin is used for SWV unless JTAG mode is active)
+    wire          dbg_tdo;                   // SWV / JTAG TDO
+    wire          dbg_tdo_nen;               // SWV / JTAG TDO tristate enable (active low)
+    wire          dbg_swdo;                  // SWD I/O 3-state output
+    wire          dbg_swdo_en;               // SWD I/O 3-state enable
+    wire          dbg_jtag_nsw;              // SWD in JTAG state (HIGH)
+    wire          dbg_swo;                   // Serial wire viewer/output
+    wire          tdo_enable     = !dbg_tdo_nen | !dbg_jtag_nsw;
+    wire          tdo_tms        = dbg_jtag_nsw         ? dbg_tdo    : dbg_swo;
+    assign        TMS            = dbg_swdo_en          ? dbg_swdo   : 1'bz;
+    assign        TDO            = tdo_enable           ? tdo_tms    : 1'bz;
+
+    // CoreSight requires a loopback from REQ to ACK for a minimal
+    // debug power control implementation
+    wire          cpu0cdbgpwrupreq;
+    wire          cpu0cdbgpwrupack;
+    assign        cpu0cdbgpwrupack = cpu0cdbgpwrupreq;
+
+    // DesignStart simplified integration level
+    CORTEXM0INTEGRATION u_CORTEXM0INTEGRATION (
+        // CLOCK AND RESETS
+        .FCLK          (fclk),               // Free running clock
+        .SCLK          (fclk),               // System clock
+        .HCLK          (fclk),               // AHB clock
+        .DCLK          (fclk),               // Debug system clock
+        .PORESETn      (reset_sync_reg[2]),  // Power on reset
+        .DBGRESETn     (reset_sync_reg[3]),  // Debug reset
+        .HRESETn       (hresetn),            // AHB and System reset
+
+        // AHB-LITE MASTER PORT
+        .HADDR         (haddrs),
+        .HBURST        (hbursts),
+        .HMASTLOCK     (hmastlocks),
+        .HPROT         (hprots),
+        .HSIZE         (hsizes),
+        .HTRANS        (htranss),
+        .HWDATA        (hwdatas),
+        .HWRITE        (hwrites),
+        .HRDATA        (hrdatas),
+        .HREADY        (hreadys),
+        .HRESP         (hresps),
+        .HMASTER       (),
+
+        // CODE SEQUENTIALITY AND SPECULATION
+        .CODENSEQ      (),
+        .CODEHINTDE    (),
+        .SPECHTRANS    (),
+
+        // DEBUG
+        .nTRST         (1'b1),
+        .SWCLKTCK      (TCK),
+        .SWDITMS       (TMS),
+        .TDI           (TDI),
+        .SWDO          (dbg_swdo),
+        .SWDOEN        (dbg_swdo_en),
+        .TDO           (dbg_tdo),
+        .nTDOEN        (dbg_tdo_nen),
+        .DBGRESTART    (1'b0),               // Debug Restart request - Not needed in a single CPU system
+        .DBGRESTARTED  (),
+        .EDBGRQ        (1'b0),               // External Debug request to CPU
+        .HALTED        (),
+
+        // MISC
+        .NMI           (1'b0),               // Non-maskable interrupt input
+        .IRQ           (irq),                // Interrupt request inputs
+        .TXEV          (),                   // Event output (SEV executed)
+        .RXEV          (1'b0),               // Event input
+        .LOCKUP        (lockup),             // Core is locked-up
+        .SYSRESETREQ   (sys_reset_req),      // System reset request
+        .STCALIB       ({1'b1,               // No alternative clock source
+                         1'b0,               // Exact multiple of 10ms from FCLK
+                         24'h007A11F}),      // Calibration value for SysTick for 50 MHz source
+        .STCLKEN       (1'b0),               // SysTick SCLK clock disable
+        .IRQLATENCY    (8'h00),
+        .ECOREVNUM     (28'h0),
+
+        // POWER MANAGEMENT
+        .GATEHCLK      (),                   // When high, HCLK can be turned off
+        .SLEEPING      (),                   // Core and NVIC sleeping
+        .SLEEPDEEP     (),                   // The processor is in deep sleep mode
+        .WAKEUP        (),                   // Active HIGH signal from WIC to the PMU that indicates a wake-up event has
+                                             // occurred and the system requires clocks and power
+        .WICSENSE      (),
+        .SLEEPHOLDREQn (1'b1),               // Extend Sleep request
+        .SLEEPHOLDACKn (),                   // Acknowledge for SLEEPHOLDREQn
+        .WICENREQ      (1'b0),               // Active HIGH request for deep sleep to be WIC-based deep sleep
+        .WICENACK      (),                   // Acknowledge for WICENREQ - WIC operation deep sleep mode
+        .CDBGPWRUPREQ  (cpu0cdbgpwrupreq),   // Debug Power Domain up request
+        .CDBGPWRUPACK  (cpu0cdbgpwrupack),   // Debug Power Domain up acknowledge.
+
+        // SCAN IO
+        .SE            (1'b0),               // DFT is tied off in this example
+        .RSTBYPASS     (1'b0)                // Reset bypass - active high to disable internal generated reset for testing
+    );
+
+    // Address Decoder 
+    AHBDCD uAHBDCD (
+      .HADDR(haddrs),
+     
+      .HSEL_S0(hsel_mem),
+      .HSEL_S1(hsel_vga),
+      .HSEL_S2(hsel_uart),
+      .HSEL_S3(hsel_timer),
+      .HSEL_S4(hsel_gpio),
+      .HSEL_S5(hsel_7seg),
+      .HSEL_S6(),
+      .HSEL_S7(),
+      .HSEL_S8(),
+      .HSEL_S9(),
+      .HSEL_NOMAP(),
+     
+      .MUX_SEL(mux_sel[3:0])
+    );
+
+    // Slave to Master Mulitplexor
+    AHBMUX uAHBMUX (
+      .HCLK(fclk),
+      .HRESETn(hresetn),
+      .MUX_SEL(mux_sel[3:0]),
+     
+      .HRDATA_S0(hrdata_mem),
+      .HRDATA_S1(hrdata_vga),
+      .HRDATA_S2(hrdata_uart),
+      .HRDATA_S3(hrdata_timer),
+      .HRDATA_S4(hrdata_gpio),
+      .HRDATA_S5(hrdata_7seg),
+      .HRDATA_S6(),
+      .HRDATA_S7(),
+      .HRDATA_S8(),
+      .HRDATA_S9(),
+      .HRDATA_NOMAP(32'hDEADBEEF),
+     
+      .HREADYOUT_S0(hready_mem),
+      .HREADYOUT_S1(hready_vga),
+      .HREADYOUT_S2(hready_uart),
+      .HREADYOUT_S3(hready_timer),
+      .HREADYOUT_S4(hready_gpio),
+      .HREADYOUT_S5(hready_7seg),
+      .HREADYOUT_S6(1'b1),
+      .HREADYOUT_S7(1'b1),
+      .HREADYOUT_S8(1'b1),
+      .HREADYOUT_S9(1'b1),
+      .HREADYOUT_NOMAP(1'b1),
+    
+      .HRDATA(hrdatas),
+      .HREADY(hreadys)
+    );
+
+    // AHBLite Peripherals
+    
+    // AHBLite Memory Controller  
+    AHB2MEM uAHB2RAM (
+      //AHBLITE Signals
+      .HSEL(hsel_mem),
+      .HCLK(fclk), 
+      .HRESETn(hresetn), 
+      .HREADY(hreadys),     
+      .HADDR(haddrs),
+      .HTRANS(htranss), 
+      .HWRITE(hwrites),
+      .HSIZE(hsizes),
+      .HWDATA(hwdatas), 
+      .HRDATA(hrdata_mem), 
+      .HREADYOUT(hready_mem)
+    );
+
+            
+    
+  // AHBLite VGA Controller  
+        AHBVGA uAHBVGA (
+        .HCLK(fclk), 
+        .HRESETn(hresetn), 
+        .HADDR(haddrs), 
+        .HWDATA(hwdatas), 
+        .HREADY(hreadys), 
+        .HWRITE(hwrites), 
+        .HTRANS(htranss), 
+        .HSEL(hsel_vga), 
+        .HRDATA(hrdata_vga), 
+        .HREADYOUT(hready_vga), 
+        .hsync(Hsync), 
+        .vsync(Vsync), 
+        .rgb({vgaRed,vgaGreen,vgaBlue})
+    );
+    
+      // AHBLite UART Peripheral 
+    
+        AHBUART uAHBUART(
+        .HCLK(fclk),
+        .HRESETn(hresetn),
+        .HADDR(haddrs),
+        .HTRANS(htranss),
+        .HWDATA(hwdatas),
+        .HWRITE(hwrites),
+        .HREADY(hreadys),
+        .HREADYOUT(hready_uart),
+        .HRDATA(hrdata_uart),
+        .HSEL(hsel_uart),
+    
+        .RsRx(RsRx),
+        .RsTx(RsTx),
+        .uart_irq(uart_irq)
+    );
+    
+        // AHBLite 7-segment Pheripheral	 
+    AHB7SEGDEC uAHB7SEGDEC(
+        .HCLK(fclk),
+        .HRESETn(hresetn),
+        .HADDR(haddrs),
+        .HTRANS(htranss),
+        .HWDATA(hwdatas),
+        .HWRITE(hwrites),
+        .HREADY(hreadys),
+        .HREADYOUT(hready_7seg),
+        .HRDATA(hrdata_7seg),
+        .HSEL(hsel_7seg),
+
+        .seg(seg),
+        .an(an),
+        .dp(dp)
+    );    
+            
+    // AHBLite timer
+    AHBTIMER uAHBTIMER(
+        .HCLK(fclk),
+        .HRESETn(hresetn),
+        .HADDR(haddrs),
+        .HTRANS(htranss),
+        .HWDATA(hwdatas),
+        .HWRITE(hwrites),
+        .HREADY(hreadys),
+        .HREADYOUT(hready_timer),
+        .HRDATA(hrdata_timer),
+        .HSEL(hsel_timer),
+        .timer_irq(timer_irq)
+    );
+ wire [15:0] gpio_in;
+wire [15:0] gpio_out;
+
+/* 
+ * GPIOIN[7:0] mapping
+ * bit0 -> column 1
+ * bit1 -> column 2
+ * ...
+ * bit6 -> column 7
+ * bit7 -> reset
  *
- * Controls:
- *   sw0 -> drop in column 1
- *   sw1 -> drop in column 2
- *   sw2 -> drop in column 3
- *   sw3 -> drop in column 4
- *   sw4 -> drop in column 5
- *   sw5 -> drop in column 6
- *   sw6 -> drop in column 7
- *   sw7 -> reset game
- *
- * Both players share the same switches.
- * Player 1 = RED
- * Player 2 = GREEN
- *
- * 7-segment display:
- *   Digit1 = 0x5400_0000
- *   Digit2 = 0x5400_0004
- *   Digit3 = 0x5400_0008
- *   Digit4 = 0x5400_000C
- *
- * Timer:
- *   30 seconds per turn
- *   Counts down on the 7-segment display
- *   When time reaches 0, turn changes to the other player.
- *
- * IMPORTANT:
- *   Update GPIO_BASE_ADDR if your hardware uses a different address.
- *   This file assumes AHBGPIO data register at base+0 and dir register at base+4.
+ * Reverse playable switches, keep reset on sw7
  */
-
-#define ROWS 6
-#define COLS 7
-
-#define CELL_W 12
-#define CELL_H 12
-#define BOARD_X 8
-#define BOARD_Y 20
-#define CURSOR_H 6
-
-/* Update this if your GPIO address is different in your AHB decoder */
-#define GPIO_BASE_ADDR      0x53000000u
-
-/* Fixed from your 7-seg register map screenshot */
-#define SEG7_DIGIT1_ADDR    0x54000000u
-#define SEG7_DIGIT2_ADDR    0x54000004u
-#define SEG7_DIGIT3_ADDR    0x54000008u
-#define SEG7_DIGIT4_ADDR    0x5400000Cu
-
-#define TURN_TIME_SEC       30u
-
-#define SW_COL0_MASK        (1u << 0)
-#define SW_COL1_MASK        (1u << 1)
-#define SW_COL2_MASK        (1u << 2)
-#define SW_COL3_MASK        (1u << 3)
-#define SW_COL4_MASK        (1u << 4)
-#define SW_COL5_MASK        (1u << 5)
-#define SW_COL6_MASK        (1u << 6)
-#define SW_RESET_MASK       (1u << 7)
-
-#define PLAYER1             1
-#define PLAYER2             2
-
-static volatile uint32_t * const GPIO32      = (volatile uint32_t *)GPIO_BASE_ADDR;
-static volatile uint32_t * const SEG7_DIGIT1 = (volatile uint32_t *)SEG7_DIGIT1_ADDR;
-static volatile uint32_t * const SEG7_DIGIT2 = (volatile uint32_t *)SEG7_DIGIT2_ADDR;
-static volatile uint32_t * const SEG7_DIGIT3 = (volatile uint32_t *)SEG7_DIGIT3_ADDR;
-static volatile uint32_t * const SEG7_DIGIT4 = (volatile uint32_t *)SEG7_DIGIT4_ADDR;
-
-static int board[ROWS][COLS];
-static int current_player;
-static int cursor_col;
-static int game_over;
-static int winner;
-
-static volatile uint8_t turn_time_left;
-static uint8_t last_switch_sample;
-
-static int r, c;
-
-/* -------------------------------------------------------------------------- */
-/* GPIO and 7-segment helpers                                                 */
-/* -------------------------------------------------------------------------- */
-static uint8_t read_switches(void)
-{
-    return (uint8_t)(GPIO32[0] & 0xFFu);
-}
-
-static void gpio_set_all_input(void)
-{
-    /* AHB GPIO DIR register at base + 4, 0 = input */
-    GPIO32[1] = 0x00000000u;
-}
-
-static void seg7_show_number(uint16_t value)
-{
-    uint8_t d1 = (uint8_t)(value % 10u);          /* ones */
-    uint8_t d2 = (uint8_t)((value / 10u) % 10u);  /* tens */
-    uint8_t d3 = (uint8_t)((value / 100u) % 10u);
-    uint8_t d4 = (uint8_t)((value / 1000u) % 10u);
-
-    *SEG7_DIGIT1 = (uint32_t)d1;
-    *SEG7_DIGIT2 = (uint32_t)d2;
-    *SEG7_DIGIT3 = (uint32_t)d3;
-    *SEG7_DIGIT4 = (uint32_t)d4;
-}
-
-static void start_turn_timer(void)
-{
-    turn_time_left = TURN_TIME_SEC;
-    seg7_show_number(turn_time_left);
-}
-
-/* -------------------------------------------------------------------------- */
-/* Drawing                                                                    */
-/* -------------------------------------------------------------------------- */
-static void clear_board_array(void)
-{
-    for (r = 0; r < ROWS; r++) {
-        for (c = 0; c < COLS; c++) {
-            board[r][c] = 0;
-        }
-    }
-}
-
-static void draw_cell(int row, int col, int value)
-{
-    int x1 = BOARD_X + col * CELL_W;
-    int y1 = BOARD_Y + row * CELL_H;
-    int x2 = x1 + CELL_W - 2;
-    int y2 = y1 + CELL_H - 2;
-
-    rectangle(x1, y1, x2, y2, BLUE);
-
-    if (value == 0) {
-        rectangle(x1 + 2, y1 + 2, x2 - 2, y2 - 2, BLACK);
-    } else if (value == PLAYER1) {
-        rectangle(x1 + 2, y1 + 2, x2 - 2, y2 - 2, RED);
-    } else {
-        rectangle(x1 + 2, y1 + 2, x2 - 2, y2 - 2, GREEN);
-    }
-}
-
-static void draw_cursor(void)
-{
-    int x1 = BOARD_X + cursor_col * CELL_W + 2;
-    int x2 = x1 + CELL_W - 6;
-    int y1 = BOARD_Y - CURSOR_H - 2;
-    int y2 = BOARD_Y - 3;
-
-    if (game_over) {
-        rectangle(x1, y1, x2, y2, WHITE);
-    } else if (current_player == PLAYER1) {
-        rectangle(x1, y1, x2, y2, RED);
-    } else {
-        rectangle(x1, y1, x2, y2, GREEN);
-    }
-}
-
-static void draw_status(void)
-{
-    if (!game_over) {
-        if (current_player == PLAYER1) {
-            printf("\nP1 TURN  sw0-sw6");
-            write_LED(0x01);
-        } else {
-            printf("\nP2 TURN  sw0-sw6");
-            write_LED(0x02);
-        }
-        printf("  TIME=%u", (unsigned)turn_time_left);
-    } else {
-        if (winner == PLAYER1) {
-            printf("\nP1 WIN  sw7 reset");
-            write_LED(0x0F);
-        } else if (winner == PLAYER2) {
-            printf("\nP2 WIN  sw7 reset");
-            write_LED(0xF0);
-        } else {
-            printf("\nDRAW    sw7 reset");
-            write_LED(0xAA);
-        }
-    }
-}
-
-static void draw_board(void)
-{
-    clear_screen();
-
-    for (r = 0; r < ROWS; r++) {
-        for (c = 0; c < COLS; c++) {
-            draw_cell(r, c, board[r][c]);
-        }
-    }
-
-    draw_cursor();
-}
-
-/* -------------------------------------------------------------------------- */
-/* Game logic                                                                 */
-/* -------------------------------------------------------------------------- */
-static int drop_piece(int col)
-{
-    int row;
-
-    for (row = ROWS - 1; row >= 0; row--) {
-        if (board[row][col] == 0) {
-            board[row][col] = current_player;
-            return row;
-        }
-    }
-
-    return -1;
-}
-
-static int count_dir(int row, int col, int dr, int dc)
-{
-    int count = 0;
-    int player = board[row][col];
-    int rr = row + dr;
-    int cc = col + dc;
-
-    while (rr >= 0 && rr < ROWS && cc >= 0 && cc < COLS &&
-           board[rr][cc] == player) {
-        count++;
-        rr += dr;
-        cc += dc;
-    }
-
-    return count;
-}
-
-static int check_winner(int row, int col)
-{
-    if (1 + count_dir(row, col, 0, 1) + count_dir(row, col, 0, -1) >= 4)
-        return 1;
-
-    if (1 + count_dir(row, col, 1, 0) + count_dir(row, col, -1, 0) >= 4)
-        return 1;
-
-    if (1 + count_dir(row, col, 1, 1) + count_dir(row, col, -1, -1) >= 4)
-        return 1;
-
-    if (1 + count_dir(row, col, 1, -1) + count_dir(row, col, -1, 1) >= 4)
-        return 1;
-
-    return 0;
-}
-
-static int check_draw(void)
-{
-    for (c = 0; c < COLS; c++) {
-        if (board[0][c] == 0)
-            return 0;
-    }
-
-    return 1;
-}
-
-static void next_player(void)
-{
-    if (current_player == PLAYER1)
-        current_player = PLAYER2;
-    else
-        current_player = PLAYER1;
-
-    start_turn_timer();
-}
-
-static void show_game_over(void)
-{
-    draw_board();
-    draw_status();
-    seg7_show_number(0);
-}
-
-static void handle_drop_column(int col)
-{
-    int row;
-
-    if (col < 0 || col >= COLS)
-        return;
-
-    if (game_over)
-        return;
-
-    cursor_col = col;
-    row = drop_piece(col);
-
-    if (row < 0) {
-        draw_board();
-        printf("\nCOLUMN %d FULL", col + 1);
-        return;
-    }
-
-    draw_board();
-
-    if (check_winner(row, col)) {
-        game_over = 1;
-        winner = current_player;
-        show_game_over();
-        return;
-    }
-
-    if (check_draw()) {
-        game_over = 1;
-        winner = 0;
-        show_game_over();
-        return;
-    }
-
-    next_player();
-    draw_status();
-    draw_board();
-}
-
-static void game_init(void)
-{
-    clear_board_array();
-
-    current_player = PLAYER1;
-    cursor_col = 3;
-    game_over = 0;
-    winner = 0;
-
-    gpio_set_all_input();
-    last_switch_sample = read_switches();
-
-    clear_screen();
-    draw_board();
-
-    printf("\n\n-------- EDK Demo ---------");
-    printf("\n---- Connect Four Game ----");
-    printf("\nsw0 -> column 1");
-    printf("\nsw1 -> column 2");
-    printf("\nsw2 -> column 3");
-    printf("\nsw3 -> column 4");
-    printf("\nsw4 -> column 5");
-    printf("\nsw5 -> column 6");
-    printf("\nsw6 -> column 7");
-    printf("\nsw7 -> reset");
-    printf("\nP1 = RED, P2 = GREEN");
-    printf("\nBoth players use the same switches.");
-    printf("\n30-second timer shown on 7-segment.");
-    printf("\nTurn switch OFF before using it again.\n");
-
-    start_turn_timer();
-    draw_status();
-
-    timer_init(Timer_Load_Value_For_One_Sec, Timer_Prescaler, 1);
-    timer_irq_clear();
-    timer_enable();
-
-    NVIC_EnableIRQ(Timer_IRQn);
-    NVIC_DisableIRQ(UART_IRQn);
-}
-
-/* -------------------------------------------------------------------------- */
-/* Switch input                                                               */
-/* -------------------------------------------------------------------------- */
-static void poll_switch_controls(void)
-{
-    uint8_t sw = read_switches();
-    uint8_t rising = (uint8_t)(sw & (uint8_t)(~last_switch_sample));
-
-    last_switch_sample = sw;
-
-    if (rising & SW_RESET_MASK) {
-        game_init();
-        return;
-    }
-
-    if (game_over)
-        return;
-
-    if (rising & SW_COL0_MASK) {
-        handle_drop_column(0);
-        return;
-    }
-    if (rising & SW_COL1_MASK) {
-        handle_drop_column(1);
-        return;
-    }
-    if (rising & SW_COL2_MASK) {
-        handle_drop_column(2);
-        return;
-    }
-    if (rising & SW_COL3_MASK) {
-        handle_drop_column(3);
-        return;
-    }
-    if (rising & SW_COL4_MASK) {
-        handle_drop_column(4);
-        return;
-    }
-    if (rising & SW_COL5_MASK) {
-        handle_drop_column(5);
-        return;
-    }
-    if (rising & SW_COL6_MASK) {
-        handle_drop_column(6);
-        return;
-    }
-}
-
-/* -------------------------------------------------------------------------- */
-/* Interrupts                                                                 */
-/* -------------------------------------------------------------------------- */
-void UART_ISR(void)
-{
-    /* UART disabled for this version. */
-    (void)UartGetc();
-}
-
-void Timer_ISR(void)
-{
-    if (!game_over) {
-        if (turn_time_left > 0u) {
-            turn_time_left--;
-            seg7_show_number(turn_time_left);
-        }
-
-        /* Timeout changes turn, but does not make a move automatically. */
-        if (turn_time_left == 0u) {
-            printf("\nTIME OUT -> next player");
-            next_player();
-            draw_status();
-            draw_board();
-        }
-    }
-
-    timer_irq_clear();
-}
-
-/* -------------------------------------------------------------------------- */
-/* Main                                                                       */
-/* -------------------------------------------------------------------------- */
-int main(void)
-{
-    SoC_init();
-    game_init();
-
-    while (1) {
-        poll_switch_controls();
-    }
-}
+assign gpio_in[0]  = sw[6];  // leftmost playable switch -> column 1
+assign gpio_in[1]  = sw[5];
+assign gpio_in[2]  = sw[4];
+assign gpio_in[3]  = sw[3];
+assign gpio_in[4]  = sw[2];
+assign gpio_in[5]  = sw[1];
+assign gpio_in[6]  = sw[0];  // rightmost playable switch -> column 7
+assign gpio_in[7]  = sw[7];  // reset
+
+assign gpio_in[15:8] = 8'b00000000;
+
+/* LEDs use upper 8 GPIO bits */
+assign LED[7:0] = gpio_out[15:8];
+
+AHBGPIO uAHBGPIO(
+    .HCLK(fclk),
+    .HRESETn(hresetn),
+    .HADDR(haddrs),
+    .HWRITE(hwrites),
+    .HWDATA(hwdatas),
+    .HTRANS(htranss),
+    .HSEL(hsel_gpio),
+    .HREADY(hreadys),
+    .GPIOIN(gpio_in),
+    .HREADYOUT(hready_gpio),
+    .HRDATA(hrdata_gpio),
+    .GPIOOUT(gpio_out)
+);
+    
+endmodule
