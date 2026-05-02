@@ -1,0 +1,10 @@
+.\newmain.o: ..\newMain.c
+.\newmain.o: .\Device\EDK_CM0.h
+.\newmain.o: .\Core\core_cm0.h
+.\newmain.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\newmain.o: .\Core\core_cmInstr.h
+.\newmain.o: .\Core\core_cmFunc.h
+.\newmain.o: .\Device\edk_driver.h
+.\newmain.o: .\Core\core_cm0.h
+.\newmain.o: .\Device\edk_api.h
+.\newmain.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

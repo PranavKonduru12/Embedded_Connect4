@@ -1,0 +1,10 @@
+.\main.o: Application\main.c
+.\main.o: .\Device\EDK_CM0.h
+.\main.o: .\Core\core_cm0.h
+.\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\main.o: .\Core\core_cmInstr.h
+.\main.o: .\Core\core_cmFunc.h
+.\main.o: .\Device\edk_driver.h
+.\main.o: .\Core\core_cm0.h
+.\main.o: .\Device\edk_api.h
+.\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
