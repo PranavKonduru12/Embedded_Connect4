@@ -389,6 +389,11 @@
               <FilePath>.\Device\cm0dsasm.s</FilePath>
             </File>
             <File>
+              <FileName>retarget.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\retarget.c</FilePath>
+            </File>
+            <File>
               <FileName>edk_api.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Device\edk_api.c</FilePath>
@@ -409,11 +414,6 @@
               <FilePath>.\Device\edk_driver.h</FilePath>
             </File>
             <File>
-              <FileName>retarget.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\retarget.c</FilePath>
-            </File>
-            <File>
               <FileName>wells version edk_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\wells version edk_driver.c</FilePath>
@@ -424,9 +424,9 @@
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>newMain.c</FileName>
+              <FileName>wells version main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\newMain.c</FilePath>
+              <FilePath>..\wells version main.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -469,5 +469,14 @@
     </components>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>code</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
