@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.runs/synth_1/AHBLITE_SYS.tcl"
+  variable script "C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.runs/synth_1/AHBLITE_SYS.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,43 +70,45 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.cache/wt [current_project]
-set_property parent.project_path C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.xpr [current_project]
+set_property webtalk.parent_dir C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.cache/wt [current_project]
+set_property parent.project_path C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.cache/ip [current_project]
+set_property ip_output_repo c:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_GPIO/AHBGPIO.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/baudgen.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/font_rom.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_rx.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_tx.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v
-  C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/baudgen.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/font_rom.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_rx.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_tx.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -117,10 +119,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc
-set_property used_in_implementation false [get_files C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]
+read_xdc C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc
+set_property used_in_implementation false [get_files C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/utils_1/imports/synth_1/AHBLITE_SYS.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

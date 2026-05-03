@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# updatemem v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri May  1 13:56:25 2026
+# Process ID: 12348
+# Current directory: C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api
+# Command line: updatemem.exe -mode batch -source D:/Xilinx/Vivado/2021.2/scripts/updatemem/main.tcl -notrace -tclargs -meminfo bram.mmi -data code.mem -proc my_bram -bit C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.runs/impl_1/AHBLITE_SYS.bit -out reflash.bit -force -debug
+# Log file: C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/updatemem.log
+# Journal file: C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api\updatemem.jou
+# Running On: Asus_Pranav, OS: Windows, CPU Frequency: 3686 MHz, CPU Physical cores: 16, Host memory: 33685 MB
+#-----------------------------------------------------------
+source D:/Xilinx/Vivado/2021.2/scripts/updatemem/main.tcl -notrace

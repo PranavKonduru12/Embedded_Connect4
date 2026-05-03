@@ -10,118 +10,106 @@
     ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 
 source AHBLITE_SYS.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/utils_1/imports/synth_1/AHBLITE_SYS.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/utils_1/imports/synth_1/AHBLITE_SYS.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top AHBLITE_SYS -part xc7a100tcsg324-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 34140
-WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:145]
+INFO: [Synth 8-7075] Helper process launched with PID 37484
+WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:145]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1452.840 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1452.840 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'AHBLITE_SYS' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v:37]
+INFO: [Synth 8-6157] synthesizing module 'AHBLITE_SYS' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:37]
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [D:/Xilinx/Vivado/2021.2/scripts/rt/data/unisim_comp.v:1083]
 INFO: [Synth 8-6155] done synthesizing module 'BUFG' (1#1) [D:/Xilinx/Vivado/2021.2/scripts/rt/data/unisim_comp.v:1083]
-INFO: [Synth 8-6157] synthesizing module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v:29]
-INFO: [Synth 8-6157] synthesizing module 'cortexm0ds_logic' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v:27]
-INFO: [Synth 8-6155] done synthesizing module 'cortexm0ds_logic' (2#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v:27]
-INFO: [Synth 8-6155] done synthesizing module 'CORTEXM0INTEGRATION' (3#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v:29]
-WARNING: [Synth 8-689] width (2) of port connection 'HRESP' does not match port width (1) of module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v:201]
-INFO: [Synth 8-6157] synthesizing module 'AHBDCD' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'AHBDCD' (4#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHBMUX' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'AHBMUX' (5#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHB2MEM' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:11]
-INFO: [Synth 8-3876] $readmem data file 'code.hex' is read successfully [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:40]
-WARNING: [Synth 8-6014] Unused sequential element APhase_HRADDR_reg was removed.  [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:61]
-INFO: [Synth 8-6155] done synthesizing module 'AHB2MEM' (6#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:11]
-INFO: [Synth 8-6157] synthesizing module 'AHBVGA' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:38]
-INFO: [Synth 8-6157] synthesizing module 'VGAInterface' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:37]
-INFO: [Synth 8-6157] synthesizing module 'GenericCounter' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
+INFO: [Synth 8-6157] synthesizing module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v:29]
+INFO: [Synth 8-6157] synthesizing module 'cortexm0ds_logic' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'cortexm0ds_logic' (2#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'CORTEXM0INTEGRATION' (3#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v:29]
+WARNING: [Synth 8-689] width (2) of port connection 'HRESP' does not match port width (1) of module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:201]
+INFO: [Synth 8-6157] synthesizing module 'AHBDCD' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'AHBDCD' (4#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v:38]
+INFO: [Synth 8-6157] synthesizing module 'AHBMUX' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'AHBMUX' (5#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v:38]
+INFO: [Synth 8-6157] synthesizing module 'AHB2MEM' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:11]
+INFO: [Synth 8-3876] $readmem data file 'code.hex' is read successfully [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:40]
+WARNING: [Synth 8-6014] Unused sequential element APhase_HRADDR_reg was removed.  [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:61]
+INFO: [Synth 8-6155] done synthesizing module 'AHB2MEM' (6#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v:11]
+INFO: [Synth 8-6157] synthesizing module 'AHBVGA' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:38]
+INFO: [Synth 8-6157] synthesizing module 'VGAInterface' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:37]
+INFO: [Synth 8-6157] synthesizing module 'GenericCounter' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
 	Parameter COUNTER_WIDTH bound to: 1 - type: integer 
 	Parameter COUNTER_MAX bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'GenericCounter' (7#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
-WARNING: [Synth 8-7071] port 'COUNT' of module 'GenericCounter' is unconnected for instance 'FreqDivider' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:66]
-WARNING: [Synth 8-7023] instance 'FreqDivider' of module 'GenericCounter' has 5 connections declared, but only 4 given [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:66]
-INFO: [Synth 8-6157] synthesizing module 'GenericCounter__parameterized0' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'GenericCounter' (7#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
+WARNING: [Synth 8-7071] port 'COUNT' of module 'GenericCounter' is unconnected for instance 'FreqDivider' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:66]
+WARNING: [Synth 8-7023] instance 'FreqDivider' of module 'GenericCounter' has 5 connections declared, but only 4 given [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:66]
+INFO: [Synth 8-6157] synthesizing module 'GenericCounter__parameterized0' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
 	Parameter COUNTER_WIDTH bound to: 10 - type: integer 
 	Parameter COUNTER_MAX bound to: 10'b1100100000 
-INFO: [Synth 8-6155] done synthesizing module 'GenericCounter__parameterized0' (7#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
-INFO: [Synth 8-6157] synthesizing module 'GenericCounter__parameterized1' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'GenericCounter__parameterized0' (7#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
+INFO: [Synth 8-6157] synthesizing module 'GenericCounter__parameterized1' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
 	Parameter COUNTER_WIDTH bound to: 10 - type: integer 
 	Parameter COUNTER_MAX bound to: 10'b1000001001 
-INFO: [Synth 8-6155] done synthesizing module 'GenericCounter__parameterized1' (7#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
-WARNING: [Synth 8-7071] port 'TRIG_OUT' of module 'GenericCounter' is unconnected for instance 'VertAddrCounter' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:87]
-WARNING: [Synth 8-7023] instance 'VertAddrCounter' of module 'GenericCounter' has 5 connections declared, but only 4 given [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:87]
-INFO: [Synth 8-6155] done synthesizing module 'VGAInterface' (8#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:37]
-INFO: [Synth 8-6157] synthesizing module 'vga_console' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:38]
-INFO: [Synth 8-6157] synthesizing module 'font_rom' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/font_rom.v:37]
-INFO: [Synth 8-6155] done synthesizing module 'font_rom' (9#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/font_rom.v:37]
-INFO: [Synth 8-6157] synthesizing module 'dual_port_ram_sync' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'GenericCounter__parameterized1' (7#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/counter.v:38]
+WARNING: [Synth 8-7071] port 'TRIG_OUT' of module 'GenericCounter' is unconnected for instance 'VertAddrCounter' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:87]
+WARNING: [Synth 8-7023] instance 'VertAddrCounter' of module 'GenericCounter' has 5 connections declared, but only 4 given [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:87]
+INFO: [Synth 8-6155] done synthesizing module 'VGAInterface' (8#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v:37]
+INFO: [Synth 8-6157] synthesizing module 'vga_console' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:38]
+INFO: [Synth 8-6157] synthesizing module 'font_rom' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/font_rom.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'font_rom' (9#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/font_rom.v:37]
+INFO: [Synth 8-6157] synthesizing module 'dual_port_ram_sync' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
 	Parameter ADDR_WIDTH bound to: 12 - type: integer 
 	Parameter DATA_WIDTH bound to: 7 - type: integer 
-WARNING: [Synth 8-3936] Found unconnected internal register 'reset_n_buf_reg' and it is trimmed from '2' to '1' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:64]
-INFO: [Synth 8-6155] done synthesizing module 'dual_port_ram_sync' (10#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
-WARNING: [Synth 8-6014] Unused sequential element pixel_y1_reg was removed.  [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:132]
-WARNING: [Synth 8-6014] Unused sequential element pixel_y2_reg was removed.  [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:133]
-WARNING: [Synth 8-7137] Register pixel_x1_reg in module vga_console has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:130]
-WARNING: [Synth 8-7137] Register pixel_x2_reg in module vga_console has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:131]
-INFO: [Synth 8-6155] done synthesizing module 'vga_console' (11#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:38]
-INFO: [Synth 8-6157] synthesizing module 'vga_image' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:38]
-INFO: [Synth 8-6157] synthesizing module 'dual_port_ram_sync__parameterized0' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
+WARNING: [Synth 8-3936] Found unconnected internal register 'reset_n_buf_reg' and it is trimmed from '2' to '1' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'dual_port_ram_sync' (10#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
+WARNING: [Synth 8-6014] Unused sequential element pixel_y1_reg was removed.  [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:132]
+WARNING: [Synth 8-6014] Unused sequential element pixel_y2_reg was removed.  [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:133]
+WARNING: [Synth 8-7137] Register pixel_x1_reg in module vga_console has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:130]
+WARNING: [Synth 8-7137] Register pixel_x2_reg in module vga_console has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:131]
+INFO: [Synth 8-6155] done synthesizing module 'vga_console' (11#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v:38]
+INFO: [Synth 8-6157] synthesizing module 'vga_image' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:38]
+INFO: [Synth 8-6157] synthesizing module 'dual_port_ram_sync__parameterized0' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
 	Parameter ADDR_WIDTH bound to: 15 - type: integer 
 	Parameter DATA_WIDTH bound to: 8 - type: integer 
-WARNING: [Synth 8-3936] Found unconnected internal register 'reset_n_buf_reg' and it is trimmed from '2' to '1' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:64]
-INFO: [Synth 8-6155] done synthesizing module 'dual_port_ram_sync__parameterized0' (11#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
-WARNING: [Synth 8-689] width (16) of port connection 'addr_b' does not match port width (15) of module 'dual_port_ram_sync__parameterized0' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:72]
-WARNING: [Synth 8-3936] Found unconnected internal register 'address_reg_reg' and it is trimmed from '16' to '15' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:62]
-INFO: [Synth 8-6155] done synthesizing module 'vga_image' (12#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:38]
-WARNING: [Synth 8-3848] Net HRDATA in module/entity AHBVGA does not have driver. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:48]
-INFO: [Synth 8-6155] done synthesizing module 'AHBVGA' (13#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHBUART' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:38]
-INFO: [Synth 8-6157] synthesizing module 'BAUDGEN' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/baudgen.v:37]
-INFO: [Synth 8-6155] done synthesizing module 'BAUDGEN' (14#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/baudgen.v:37]
-INFO: [Synth 8-6157] synthesizing module 'FIFO' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v:38]
+WARNING: [Synth 8-3936] Found unconnected internal register 'reset_n_buf_reg' and it is trimmed from '2' to '1' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'dual_port_ram_sync__parameterized0' (11#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/dual_port_ram_sync.v:37]
+WARNING: [Synth 8-689] width (16) of port connection 'addr_b' does not match port width (15) of module 'dual_port_ram_sync__parameterized0' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:72]
+WARNING: [Synth 8-3936] Found unconnected internal register 'address_reg_reg' and it is trimmed from '16' to '15' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'vga_image' (12#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v:38]
+WARNING: [Synth 8-3848] Net HRDATA in module/entity AHBVGA does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'AHBVGA' (13#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:38]
+INFO: [Synth 8-6157] synthesizing module 'AHBUART' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:38]
+INFO: [Synth 8-6157] synthesizing module 'BAUDGEN' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/baudgen.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'BAUDGEN' (14#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/baudgen.v:37]
+INFO: [Synth 8-6157] synthesizing module 'FIFO' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v:38]
 	Parameter DWIDTH bound to: 8 - type: integer 
 	Parameter AWIDTH bound to: 4 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v:115]
-INFO: [Synth 8-6155] done synthesizing module 'FIFO' (15#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v:38]
-INFO: [Synth 8-6157] synthesizing module 'UART_RX' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_rx.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'UART_RX' (16#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_rx.v:38]
-INFO: [Synth 8-6157] synthesizing module 'UART_TX' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_tx.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'UART_TX' (17#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_tx.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'AHBUART' (18#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHB7SEGDEC' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'AHB7SEGDEC' (19#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHBTIMER' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:38]
-INFO: [Synth 8-6157] synthesizing module 'prescaler' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v:37]
-INFO: [Synth 8-6155] done synthesizing module 'prescaler' (20#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v:37]
-INFO: [Synth 8-6155] done synthesizing module 'AHBTIMER' (21#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHBGPIO' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_GPIO/AHBGPIO.v:38]
-INFO: [Synth 8-6155] done synthesizing module 'AHBGPIO' (22#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_GPIO/AHBGPIO.v:38]
-WARNING: [Synth 8-689] width (8) of port connection 'GPIOOUT' does not match port width (16) of module 'AHBGPIO' [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v:411]
-WARNING: [Synth 8-3848] Net TCK in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v:211]
-WARNING: [Synth 8-3848] Net TDI in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v:213]
-INFO: [Synth 8-6155] done synthesizing module 'AHBLITE_SYS' (23#1) [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v:37]
-WARNING: [Synth 8-7129] Port HRDATA[31] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[30] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[29] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[28] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[27] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[26] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[25] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[24] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[23] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[22] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[21] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[20] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[19] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[18] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[17] in module AHBGPIO is either unconnected or has no load
-WARNING: [Synth 8-7129] Port HRDATA[16] in module AHBGPIO is either unconnected or has no load
+INFO: [Synth 8-155] case statement is not full and has no default [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v:115]
+INFO: [Synth 8-6155] done synthesizing module 'FIFO' (15#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/fifo.v:38]
+INFO: [Synth 8-6157] synthesizing module 'UART_RX' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_rx.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'UART_RX' (16#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_rx.v:38]
+INFO: [Synth 8-6157] synthesizing module 'UART_TX' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_tx.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'UART_TX' (17#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/uart_tx.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'AHBUART' (18#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:38]
+INFO: [Synth 8-6157] synthesizing module 'AHB7SEGDEC' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:38]
+INFO: [Synth 8-6155] done synthesizing module 'AHB7SEGDEC' (19#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:38]
+INFO: [Synth 8-6157] synthesizing module 'AHBTIMER' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:38]
+INFO: [Synth 8-6157] synthesizing module 'prescaler' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'prescaler' (20#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'AHBTIMER' (21#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:38]
+INFO: [Synth 8-6157] synthesizing module 'AHBGPIO' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V:1]
+INFO: [Synth 8-6155] done synthesizing module 'AHBGPIO' (22#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V:1]
+WARNING: [Synth 8-3848] Net TCK in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:211]
+WARNING: [Synth 8-3848] Net TDI in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:213]
+INFO: [Synth 8-6155] done synthesizing module 'AHBLITE_SYS' (23#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:37]
 WARNING: [Synth 8-7129] Port HWDATA[31] in module AHBGPIO is either unconnected or has no load
 WARNING: [Synth 8-7129] Port HWDATA[30] in module AHBGPIO is either unconnected or has no load
 WARNING: [Synth 8-7129] Port HWDATA[29] in module AHBGPIO is either unconnected or has no load
@@ -206,49 +194,70 @@ WARNING: [Synth 8-7129] Port HRDATA[22] in module AHBVGA is either unconnected o
 WARNING: [Synth 8-7129] Port HRDATA[21] in module AHBVGA is either unconnected or has no load
 WARNING: [Synth 8-7129] Port HRDATA[20] in module AHBVGA is either unconnected or has no load
 WARNING: [Synth 8-7129] Port HRDATA[19] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[18] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[17] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[16] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[15] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[14] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[13] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[12] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[11] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[10] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[9] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[8] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[7] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[6] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[5] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[4] in module AHBVGA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port HRDATA[3] in module AHBVGA is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1638.340 ; gain = 185.500
+Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1643.594 ; gain = 190.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1638.340 ; gain = 185.500
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1643.594 ; gain = 190.754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1638.340 ; gain = 185.500
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1643.594 ; gain = 190.754
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1638.340 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1643.594 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]
-Finished Parsing XDC File [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/AHBLITE_SYS_propImpl.xdc].
+Parsing XDC File [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]
+Finished Parsing XDC File [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/constrs_1/imports/lab_files/Lab5_Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/AHBLITE_SYS_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/AHBLITE_SYS_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1681.004 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1683.121 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 1681.004 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 1683.121 ; gain = 0.000
+WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1681.004 ; gain = 228.164
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1683.121 ; gain = 230.281
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
-WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '24' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:86]
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1683.121 ; gain = 230.281
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '24' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:86]
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'UART_RX'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'UART_TX'
-WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:104]
-WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '4' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:83]
-WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '4' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:102]
-WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_GPIO/AHBGPIO.v:79]
+WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:104]
+WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '4' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:83]
+WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '4' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:102]
+WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V:34]
 INFO: [Synth 8-3971] The signal "dual_port_ram_sync:/ram_reg" was recognized as a true dual port RAM template.
 INFO: [Synth 8-3971] The signal "dual_port_ram_sync__parameterized0:/ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------------------------
@@ -270,7 +279,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using e
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'UART_TX'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:32 ; elapsed = 00:00:35 . Memory (MB): peak = 1681.004 ; gain = 228.164
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1683.121 ; gain = 230.281
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -298,7 +307,7 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 4     
 	               24 Bit    Registers := 1     
 	               22 Bit    Registers := 1     
-	               16 Bit    Registers := 3     
+	               16 Bit    Registers := 2     
 	               15 Bit    Registers := 3     
 	               12 Bit    Registers := 2     
 	               11 Bit    Registers := 1     
@@ -322,7 +331,7 @@ Detailed RTL Component Info :
 	   3 Input   32 Bit        Muxes := 1     
 	   2 Input   22 Bit        Muxes := 1     
 	  11 Input   16 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 3     
 	   2 Input   15 Bit        Muxes := 1     
 	   2 Input   12 Bit        Muxes := 3     
 	   2 Input    8 Bit        Muxes := 7     
@@ -337,7 +346,7 @@ Detailed RTL Component Info :
 	   2 Input    2 Bit        Muxes := 2     
 	   2 Input    1 Bit        Muxes := 444   
 	   4 Input    1 Bit        Muxes := 24    
-	   3 Input    1 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 3     
 	   5 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -371,7 +380,7 @@ RAM Pipeline Warning: Read Address Register Found For RAM uAHBVGA/uvga_image/uim
 RAM Pipeline Warning: Read Address Register Found For RAM uAHBVGA/uvga_console/uvideo_ram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 RAM Pipeline Warning: Read Address Register Found For RAM uAHBVGA/uvga_image/uimage_ram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:00:56 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:06 . Memory (MB): peak = 1720.980 ; gain = 268.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -423,13 +432,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:01:00 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:14 . Memory (MB): peak = 1720.980 ; gain = 268.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:01:01 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:01:15 . Memory (MB): peak = 1720.980 ; gain = 268.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -474,7 +483,7 @@ INFO: [Synth 8-7052] The timing for the instance uAHBVGA/uvga_image/uimage_ram/r
 INFO: [Synth 8-7052] The timing for the instance uAHBVGA/uvga_image/uimage_ram/ram_reg_0_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance uAHBVGA/uvga_console/ufont_rom/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:01:03 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Technology Mapping : Time (s): cpu = 00:01:10 ; elapsed = 00:01:18 . Memory (MB): peak = 1720.980 ; gain = 268.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -492,37 +501,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished IO Insertion : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -542,18 +551,18 @@ Report Cell Usage:
 |2     |CARRY4   |    76|
 |3     |DSP48E1  |     3|
 |4     |LUT1     |    99|
-|5     |LUT2     |   337|
-|6     |LUT3     |   297|
-|7     |LUT4     |   384|
-|8     |LUT5     |   730|
-|9     |LUT6     |  1834|
+|5     |LUT2     |   351|
+|6     |LUT3     |   290|
+|7     |LUT4     |   373|
+|8     |LUT5     |   725|
+|9     |LUT6     |  1850|
 |10    |MUXF7    |     5|
 |11    |MUXF8    |     1|
 |12    |RAM32M   |     2|
 |13    |RAM32X1D |     4|
 |14    |RAMB18E1 |     1|
 |15    |RAMB36E1 |    13|
-|21    |FDCE     |   496|
+|21    |FDCE     |   480|
 |22    |FDPE     |    72|
 |23    |FDRE     |   686|
 |24    |FDSE     |    96|
@@ -561,28 +570,28 @@ Report Cell Usage:
 |26    |OBUF     |    31|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 259 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:01:04 . Memory (MB): peak = 1728.062 ; gain = 232.559
-Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:01:06 . Memory (MB): peak = 1728.062 ; gain = 275.223
+Synthesis finished with 0 errors, 0 critical warnings and 243 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:01 ; elapsed = 00:01:21 . Memory (MB): peak = 1724.570 ; gain = 232.203
+Synthesis Optimization Complete : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 1729.730 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 1740.203 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 105 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1738.688 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1749.297 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 6 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
 
-Synth Design complete, checksum: bcdbcf5f
+Synth Design complete, checksum: de1fc018
 INFO: [Common 17-83] Releasing license: Synthesis
-90 Infos, 125 Warnings, 0 Critical Warnings and 0 Errors encountered.
+94 Infos, 126 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:55 ; elapsed = 00:01:12 . Memory (MB): peak = 1738.688 ; gain = 285.848
-INFO: [Common 17-1381] The checkpoint 'C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.runs/synth_1/AHBLITE_SYS.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:18 ; elapsed = 00:01:27 . Memory (MB): peak = 1749.297 ; gain = 296.457
+INFO: [Common 17-1381] The checkpoint 'C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.runs/synth_1/AHBLITE_SYS.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file AHBLITE_SYS_utilization_synth.rpt -pb AHBLITE_SYS_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Apr 30 14:51:21 2026...
+INFO: [Common 17-206] Exiting Vivado at Sat May  2 17:05:49 2026...

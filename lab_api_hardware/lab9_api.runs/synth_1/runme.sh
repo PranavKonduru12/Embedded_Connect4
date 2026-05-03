@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/LocalWorkspace/EE277A/EE277A_labs/Lab9_workspace/lab9_api/lab9_api.runs/synth_1'
+HD_PWD='C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
