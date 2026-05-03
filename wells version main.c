@@ -70,6 +70,9 @@
 #define PLAYER1             1
 #define PLAYER2             2
 
+//chat
+#define CHAT_BUF_SIZE 80
+
 static volatile uint32_t * const GPIO32      = (volatile uint32_t *)GPIO_BASE_ADDR;
 static volatile uint32_t * const SEG7_DIGIT1 = (volatile uint32_t *)SEG7_DIGIT1_ADDR;
 static volatile uint32_t * const SEG7_DIGIT2 = (volatile uint32_t *)SEG7_DIGIT2_ADDR;
@@ -86,6 +89,12 @@ static volatile uint8_t turn_time_left;
 static uint8_t last_switch_sample;
 
 static int r, c;
+
+
+static char chat_buffer[CHAT_BUF_SIZE];
+static int chat_index = 0;
+static int chat_player = 1;
+static int chat_prompt_printed = 0;
 
 /* -------------------------------------------------------------------------- */
 /* GPIO and 7-segment helpers                                                 */
@@ -351,6 +360,7 @@ static void game_init(void)
     printf("\nBoth players use the same switches.");
     printf("\n30-second timer shown on 7-segment.");
     printf("\nTurn switch OFF before using it again.\n");
+		
 
     start_turn_timer();
     draw_status();
@@ -360,7 +370,8 @@ static void game_init(void)
     timer_enable();
 
     NVIC_EnableIRQ(Timer_IRQn);
-    NVIC_DisableIRQ(UART_IRQn);
+    //NVIC_DisableIRQ(UART_IRQn);
+		NVIC_EnableIRQ(UART_IRQn);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -411,13 +422,94 @@ static void poll_switch_controls(void)
     }
 }
 
+
+
+void UART_puts(const char *s)
+{
+    while (*s) {
+        UartPutc(*s++);
+    }
+}
+
+//Helper function to print message in vga
+void VGA_puts(const char *s)
+{
+    while (*s) {
+        VGAPutc(*s++);
+    }
+}
+
+void print_chat_prompt(void)
+{
+    if (chat_player == 1)
+        UART_puts("\r\nPlayer 1> ");
+    else
+        UART_puts("\r\nPlayer 2> ");
+}
+
 /* -------------------------------------------------------------------------- */
 /* Interrupts                                                                 */
 /* -------------------------------------------------------------------------- */
+//void UART_ISR(void)
+//{
+//    /* UART disabled for this version. */
+//    (void)UartGetc();
+//}
+
 void UART_ISR(void)
 {
-    /* UART disabled for this version. */
-    (void)UartGetc();
+    unsigned char c;
+
+    if (chat_prompt_printed == 0) {
+        print_chat_prompt();
+        chat_prompt_printed = 1;
+    }
+
+    c = UartGetc();
+
+    if (c == '\r' || c == '\n') {
+        chat_buffer[chat_index] = '\0';
+
+        UART_puts("\r\n");
+
+        if (chat_player == 1) {
+            VGA_puts("\nPlayer 1: ");
+            VGA_puts(chat_buffer);
+            VGAPutc('\n');
+
+            chat_player = 2;
+        }
+        else {
+            VGA_puts("\nPlayer 2: ");
+            VGA_puts(chat_buffer);
+            VGAPutc('\n');
+
+            chat_player = 1;
+        }
+
+        chat_index = 0;
+        print_chat_prompt();
+    }
+
+    else if (c == 0x08 || c == 0x7F) {
+        if (chat_index > 0) {
+            chat_index--;
+
+            /* Move cursor back, erase character, move cursor back again */
+            UartPutc('\b');
+            UartPutc(' ');
+            UartPutc('\b');
+        }
+    }
+
+    else {
+        if (chat_index < CHAT_BUF_SIZE - 1) {
+            chat_buffer[chat_index++] = c;
+
+            /* Echo typed character to SSH/TeraTerm */
+            UartPutc(c);
+        }
+    }
 }
 
 void Timer_ISR(void)
