@@ -49,6 +49,7 @@ static int current_player;
 static int cursor_col;
 static int game_over;
 static int winner;
+static uint8_t game_paused;
 
 static volatile uint8_t turn_time_left;
 static uint8_t last_switch_sample;
@@ -72,6 +73,7 @@ static char name_temp[NAME_MAX_LEN + 1u];
 
 static void draw_board(void);
 static void draw_status(void);
+static void toggle_pause(void);
 
 static void uart_rx_push(uint8_t ch)
 {
@@ -134,8 +136,12 @@ static void process_uart_name_input(void)
     uint8_t ch;
 
     while (uart_rx_pop(&ch)) {
-        if (!entering_names)
+        if (!entering_names) {
+            if (ch == ' ') {
+                toggle_pause();
+            }
             continue;
+        }
 
         if (ch == '\r' || ch == '\n') {
             printf("\n");
@@ -232,6 +238,13 @@ static void draw_cursor(void)
 static void draw_status(void)
 {
     if (!game_over) {
+        if (game_paused) {
+            printf("\nGAME PAUSED  press SPACE to resume  sw7 reset");
+            write_LED(0x55);
+            printf("  TIME=%u", (unsigned)turn_time_left);
+            return;
+        }
+
         if (current_player == PLAYER1) {
             printf("\n%s TURN  sw0-sw6", player_name[PLAYER1]);
             write_LED(0x01);
@@ -354,6 +367,9 @@ static void handle_drop_column(int col)
     if (game_over)
         return;
 
+    if (game_paused)
+        return;
+
     cursor_col = col;
     row = drop_piece(col);
 
@@ -392,6 +408,7 @@ static void game_init(void)
     cursor_col = 3;
     game_over = 0;
     winner = 0;
+    game_paused = 0u;
 
     gpio_set_all_input();
     last_switch_sample = read_switches();
@@ -409,6 +426,7 @@ static void game_init(void)
     printf("\nsw5 -> column 6");
     printf("\nsw6 -> column 7");
     printf("\nsw7 -> reset");
+    printf("\nSPACE in Tera Term -> pause/resume");
     printf("\nP1 = RED, P2 = GREEN");
     printf("\nBoth players use the same switches.");
     printf("\n30-second timer shown on 7-segment.");
@@ -433,6 +451,17 @@ static void game_init(void)
     NVIC_EnableIRQ(UART_IRQn);
 }
 
+static void toggle_pause(void)
+{
+    if (entering_names || game_over)
+        return;
+
+    game_paused = (uint8_t)(!game_paused);
+
+    draw_board();
+    draw_status();
+}
+
 static void poll_switch_controls(void)
 {
     uint8_t sw = read_switches();
@@ -446,6 +475,9 @@ static void poll_switch_controls(void)
     }
 
     if (game_over)
+        return;
+
+    if (game_paused)
         return;
 
     if (rising & SW_COL0_MASK) {
@@ -494,7 +526,7 @@ void UART_ISR(void)
 
 void Timer_ISR(void)
 {
-    if (!game_over && !entering_names) {
+    if (!game_over && !entering_names && !game_paused) {
         if (turn_time_left > 0u) {
             turn_time_left--;
             seg7_show_number(turn_time_left);
