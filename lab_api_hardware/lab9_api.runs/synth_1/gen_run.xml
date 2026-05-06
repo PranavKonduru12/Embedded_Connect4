@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1777766651" LaunchIncrCheckpoint="$PPRDIR/../../../EE277A_labs/Lab9_workspace/lab9_api/lab9_api.srcs/utils_1/imports/synth_1/AHBLITE_SYS.dcp">
   <File Type="PA-TCL" Name="AHBLITE_SYS.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="AHBLITE_SYS_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="AHBLITE_SYS_reports.tcl"/>
   <File Type="RDS-RDS" Name="AHBLITE_SYS.vds"/>
   <File Type="RDS-UTIL" Name="AHBLITE_SYS_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="AHBLITE_SYS_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="AHBLITE_SYS.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="AHBLITE_SYS_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="AHBLITE_SYS_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v">

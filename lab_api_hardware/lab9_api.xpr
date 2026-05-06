@@ -282,7 +282,6 @@
       <File Path="$PSRCDIR/sources_1/imports/FPGA_prev_labs/AHBLITE_SYS.v">
         <FileInfo>
           <Attr Name="UserDisabled" Val="1"/>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../EE277A_labs/Lab9_workspace/lab_files/FPGA_prev_labs/AHBLITE_SYS.v"/>
           <Attr Name="ImportTime" Val="1777584650"/>
           <Attr Name="UsedIn" Val="synthesis"/>
