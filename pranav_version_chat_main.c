@@ -91,9 +91,17 @@ static uint8_t last_switch_sample;
 static int r, c;
 
 
+// ---------------- CHAT SYSTEM ----------------
+// Buffer to store typed message before Enter is pressed
 static char chat_buffer[CHAT_BUF_SIZE];
+
+// Current position in the buffer
 static int chat_index = 0;
+
+// Tracks which player is sending the next message (for labeling)
 static int chat_player = 1;
+
+// Ensures the chat prompt is printed only once at start
 static int chat_prompt_printed = 0;
 
 /* -------------------------------------------------------------------------- */
@@ -424,6 +432,7 @@ static void poll_switch_controls(void)
 
 
 
+// Sends a string to the SSH terminal (UART output)
 void UART_puts(const char *s)
 {
     while (*s) {
@@ -432,6 +441,7 @@ void UART_puts(const char *s)
 }
 
 //Helper function to print message in vga
+//character-by-character
 void VGA_puts(const char *s)
 {
     while (*s) {
@@ -439,6 +449,8 @@ void VGA_puts(const char *s)
     }
 }
 
+// Prints the chat prompt on the SSH terminal
+// Example: "Player 1> " or "Player 2> "
 void print_chat_prompt(void)
 {
     if (chat_player == 1)
@@ -460,23 +472,31 @@ void UART_ISR(void)
 {
     unsigned char c;
 
+    // Print prompt once when chat starts
     if (chat_prompt_printed == 0) {
         print_chat_prompt();
         chat_prompt_printed = 1;
     }
 
+    // Read one character from UART (SSH terminal)
     c = UartGetc();
 
+    // If Enter is pressed → message is complete
     if (c == '\r' || c == '\n') {
+
+        // Null-terminate the string
         chat_buffer[chat_index] = '\0';
 
+        // Move to new line in SSH
         UART_puts("\r\n");
 
+        // Display full message on VGA with player label
         if (chat_player == 1) {
             VGA_puts("\nPlayer 1: ");
             VGA_puts(chat_buffer);
             VGAPutc('\n');
 
+            // Switch to next player
             chat_player = 2;
         }
         else {
@@ -484,29 +504,37 @@ void UART_ISR(void)
             VGA_puts(chat_buffer);
             VGAPutc('\n');
 
+            // Switch to next player
             chat_player = 1;
         }
 
+        // Reset buffer for next message
         chat_index = 0;
+
+        // Print next prompt on SSH
         print_chat_prompt();
     }
 
+    // Handle backspace/delete key
     else if (c == 0x08 || c == 0x7F) {
         if (chat_index > 0) {
             chat_index--;
 
-            /* Move cursor back, erase character, move cursor back again */
+            // Erase character visually in SSH
             UartPutc('\b');
             UartPutc(' ');
             UartPutc('\b');
         }
     }
 
+    // Normal character input
     else {
         if (chat_index < CHAT_BUF_SIZE - 1) {
+
+            // Store character in buffer
             chat_buffer[chat_index++] = c;
 
-            /* Echo typed character to SSH/TeraTerm */
+            // Echo character to SSH terminal
             UartPutc(c);
         }
     }
