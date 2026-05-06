@@ -424,9 +424,9 @@
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>wells version main.c</FileName>
+              <FileName>main_uart with the blank to pause .c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\wells version main.c</FilePath>
+              <FilePath>..\main_uart with the blank to pause .c</FilePath>
             </File>
           </Files>
         </Group>

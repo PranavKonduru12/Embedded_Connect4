@@ -1,0 +1,10 @@
+.\pranav_version_chat_main.o: ..\pranav_version_chat_main.c
+.\pranav_version_chat_main.o: .\Device\EDK_CM0.h
+.\pranav_version_chat_main.o: .\Core\core_cm0.h
+.\pranav_version_chat_main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\pranav_version_chat_main.o: .\Core\core_cmInstr.h
+.\pranav_version_chat_main.o: .\Core\core_cmFunc.h
+.\pranav_version_chat_main.o: .\Device\edk_driver.h
+.\pranav_version_chat_main.o: .\Core\core_cm0.h
+.\pranav_version_chat_main.o: .\Device\edk_api.h
+.\pranav_version_chat_main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

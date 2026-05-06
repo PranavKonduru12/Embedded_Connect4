@@ -34,7 +34,7 @@ I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6026047E)
 I (.\Core\core_cmInstr.h)(0x69F3CA34)
 I (.\Core\core_cmFunc.h)(0x69F3CA34)
 I (.\Device\edk_api.h)(0x69F462A4)
-F (..\wells version main.c)(0x69F6ACE7)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I .\Application -I .\Core -I .\Device-I.\RTE\_Target_1-ID:\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Arm\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM0 -D_RTE_-o ".\wells version main.o" --omf_browse ".\wells version main.crf" --depend ".\wells version main.d")
+F (..\main_uart with the blank to pause .c)(0x69F69D0B)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I .\Application -I .\Core -I .\Device-I.\RTE\_Target_1-ID:\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Arm\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM0 -D_RTE_-o ".\main_uart with the blank to pause .o" --omf_browse ".\main_uart with the blank to pause .crf" --depend ".\main_uart with the blank to pause .d")
 I (.\Device\EDK_CM0.h)(0x69F3CA34)
 I (.\Core\core_cm0.h)(0x69F3CA34)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6026047E)
