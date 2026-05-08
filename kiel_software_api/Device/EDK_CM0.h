@@ -18,7 +18,8 @@ typedef enum IRQn
 
 /******  CMSDK Specific Interrupt Numbers *********************************************************/
   Timer_IRQn                  = 0,       
-  UART_IRQn                  = 1,       
+  UART_IRQn                   = 1,
+	GPIO_IRQn										= 2
 
 } IRQn_Type;
 

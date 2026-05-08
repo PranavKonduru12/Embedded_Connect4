@@ -424,9 +424,9 @@
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>main_uart with the blank to pause .c</FileName>
+              <FileName>harsh_gpioISR.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main_uart with the blank to pause .c</FilePath>
+              <FilePath>..\harsh_gpioISR.c</FilePath>
             </File>
           </Files>
         </Group>
