@@ -20,7 +20,9 @@ void SoC_init(void){
 	NVIC_SetPriority (GPIO_IRQn, 0x80);			//Set GPIO a lowest priority
 	seven_seg_write(0,0,0,0);								//Clean 7-segment display
 	clear_screen();	
+	//Does not do bit shift, only comparision, but still works
 	SCB -> SCR = 1<1;												//Enable sleep-on-exit bit
+//	SCB->SCR |= (1 << 1); Does SLEEPONEXIT
 }
 
 //---------------------------------------------
