@@ -384,11 +384,6 @@
           <GroupName>Device</GroupName>
           <Files>
             <File>
-              <FileName>cm0dsasm.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\Device\cm0dsasm.s</FilePath>
-            </File>
-            <File>
               <FileName>retarget.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Device\retarget.c</FilePath>
@@ -418,15 +413,20 @@
               <FileType>1</FileType>
               <FilePath>..\wells version edk_driver.c</FilePath>
             </File>
+            <File>
+              <FileName>cm0dsasm_multiple_inputs_gpio.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\cm0dsasm_multiple_inputs_gpio.s</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>harsh_gpioISR.c</FileName>
+              <FileName>main_uart_with_pause_multiple_switches.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\harsh_gpioISR.c</FilePath>
+              <FilePath>..\main_uart_with_pause_multiple_switches.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,9 +1,9 @@
 --cpu Cortex-M0
-".\cm0dsasm.o"
 ".\retarget.o"
 ".\edk_api.o"
 ".\wells version edk_driver.o"
-".\main_uart with the blank to pause .o"
+".\cm0dsasm_multiple_inputs_gpio.o"
+".\main_uart_with_pause_multiple_switches.o"
 --ro-base 0x00000000 --entry 0x00000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\code.map" -o .\code.axf
