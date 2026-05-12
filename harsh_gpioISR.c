@@ -21,6 +21,8 @@
 #define GPIO_RESET_MASK  0x08
 #define GPIO_QUIT_MASK   0x10
 
+
+
 static int board[ROWS][COLS];
 static int current_player;
 static int cursor_col;
@@ -269,25 +271,76 @@ void handle_drop(void)
 //--------------------------------------------------------
 // GPIO Interrupt Service Routine
 //--------------------------------------------------------
+//void GPIO_ISR(void)
+//{
+//    unsigned int gpio_value;
+//    unsigned int rising;
+
+//    gpio_value = read_GPIO();          // Replace if Lab 9 uses another GPIO read function
+//    rising = gpio_value & ~prev_gpio;  // Rising-edge detection
+//    prev_gpio = gpio_value;
+
+//    if (rising & GPIO_QUIT_MASK) {
+//        quit_game = 1;
+//        printf("\nQUIT");
+//        gpio_irq_clear();              // Replace if Lab 9 uses another clear function
+//        return;
+//    }
+
+//    if (rising & GPIO_RESET_MASK) {
+//        game_init();
+//        gpio_irq_clear();
+//        return;
+//    }
+
+//    if (game_over) {
+//        gpio_irq_clear();
+//        return;
+//    }
+
+//    if (rising & GPIO_LEFT_MASK) {
+//        if (cursor_col > 0) {
+//            cursor_col--;
+//            draw_board();
+//            draw_status();
+//        }
+//    }
+
+//    else if (rising & GPIO_RIGHT_MASK) {
+//        if (cursor_col < COLS - 1) {
+//            cursor_col++;
+//            draw_board();
+//            draw_status();
+//        }
+//    }
+
+//    else if (rising & GPIO_DROP_MASK) {
+//        handle_drop();
+//    }
+
+//    gpio_irq_clear();
+//}
+
+//change for multiple switches
 void GPIO_ISR(void)
 {
     unsigned int gpio_value;
     unsigned int rising;
 
-    gpio_value = read_GPIO();          // Replace if Lab 9 uses another GPIO read function
-    rising = gpio_value & ~prev_gpio;  // Rising-edge detection
+    gpio_value = read_GPIO();
+    rising = gpio_value & ~prev_gpio;
     prev_gpio = gpio_value;
 
     if (rising & GPIO_QUIT_MASK) {
         quit_game = 1;
         printf("\nQUIT");
-        gpio_irq_clear();              // Replace if Lab 9 uses another clear function
+        gpio_irq_clear();
         return;
     }
 
     if (rising & GPIO_RESET_MASK) {
-        game_init();
         gpio_irq_clear();
+        game_init();
         return;
     }
 
@@ -303,7 +356,6 @@ void GPIO_ISR(void)
             draw_status();
         }
     }
-
     else if (rising & GPIO_RIGHT_MASK) {
         if (cursor_col < COLS - 1) {
             cursor_col++;
@@ -311,7 +363,6 @@ void GPIO_ISR(void)
             draw_status();
         }
     }
-
     else if (rising & GPIO_DROP_MASK) {
         handle_drop();
     }
