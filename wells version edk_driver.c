@@ -86,3 +86,19 @@ void GPIO_write(int data){
     GPIO->DIR = 0xFF00;
     GPIO->DATA = (data & 0xFF) << 8;
 }
+
+//change for multiple switches
+unsigned int read_GPIO(void)
+{
+    return *(volatile unsigned int *)AHB_GPIO_DATA;
+}
+
+void gpio_irq_clear(void)
+{
+    *(volatile unsigned int *)AHB_GPIO_IRQ_CLR = 1u;
+}
+
+void gpio_set_input(void)
+{
+    *(volatile unsigned int *)AHB_GPIO_DIR = 0u;
+}
