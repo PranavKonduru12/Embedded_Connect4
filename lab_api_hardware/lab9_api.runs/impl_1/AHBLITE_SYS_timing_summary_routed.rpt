@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-| Date         : Sat May  2 17:07:54 2026
+| Date         : Mon May 11 18:36:02 2026
 | Host         : Asus_Pranav running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file AHBLITE_SYS_timing_summary_routed.rpt -pb AHBLITE_SYS_timing_summary_routed.pb -rpx AHBLITE_SYS_timing_summary_routed.rpx -warn_on_violation
 | Design       : AHBLITE_SYS
@@ -53,10 +53,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (1384)
+1. checking no_clock (1407)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (3529)
+4. checking unconstrained_internal_endpoints (3575)
 5. checking no_input_delay (10)
 6. checking no_output_delay (31)
 7. checking multiple_clock (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (1384)
+1. checking no_clock (1407)
 ---------------------------
- There are 1380 register/latch pins with no clock driven by root clock pin: clk_div_reg/Q (HIGH)
+ There are 1403 register/latch pins with no clock driven by root clock pin: clk_div_reg/Q (HIGH)
 
  There are 4 register/latch pins with no clock driven by root clock pin: uAHB7SEGDEC/counter_reg[15]/Q (HIGH)
 
@@ -83,9 +83,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (3529)
+4. checking unconstrained_internal_endpoints (3575)
 ---------------------------------------------------
- There are 3529 pins that are not constrained for maximum delay. (HIGH)
+ There are 3575 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -365,554 +365,587 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay          3560 Endpoints
-Min Delay          3560 Endpoints
+Max Delay          3606 Endpoints
+Min Delay          3606 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg_rep/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.461ns  (logic 9.291ns (32.645%)  route 19.170ns (67.355%))
-  Logic Levels:           20  (CARRY4=2 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=2 LUT5=1 LUT6=9)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    18.283 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/O[0]
-                         net (fo=1, routed)           0.939    19.222    u_CORTEXM0INTEGRATION/u_logic/p_1_in62_in
-    SLICE_X48Y97         LUT6 (Prop_lut6_I2_O)        0.295    19.517 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6/O
-                         net (fo=1, routed)           0.890    20.407    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6_n_0
-    SLICE_X48Y97         LUT6 (Prop_lut6_I1_O)        0.124    20.531 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2/O
-                         net (fo=2, routed)           0.970    21.502    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2_n_0
-    SLICE_X41Y95         LUT3 (Prop_lut3_I0_O)        0.124    21.626 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34/O
-                         net (fo=1, routed)           1.097    22.723    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34_n_0
-    SLICE_X48Y94         LUT6 (Prop_lut6_I5_O)        0.124    22.847 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28/O
-                         net (fo=1, routed)           0.302    23.149    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28_n_0
-    SLICE_X48Y93         LUT4 (Prop_lut4_I3_O)        0.124    23.273 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24/O
-                         net (fo=1, routed)           0.798    24.071    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24_n_0
-    SLICE_X48Y93         LUT6 (Prop_lut6_I5_O)        0.124    24.195 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10/O
-                         net (fo=1, routed)           0.992    25.187    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10_n_0
-    SLICE_X42Y90         LUT6 (Prop_lut6_I5_O)        0.124    25.311 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
-                         net (fo=2, routed)           0.881    26.193    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
-    SLICE_X48Y90         LUT6 (Prop_lut6_I2_O)        0.124    26.317 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14/O
-                         net (fo=2, routed)           0.917    27.233    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14_n_0
-    SLICE_X57Y77         LUT6 (Prop_lut6_I3_O)        0.124    27.357 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4/O
-                         net (fo=3, routed)           0.980    28.337    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4_n_0
-    SLICE_X53Y77         LUT6 (Prop_lut6_I2_O)        0.124    28.461 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_rep_i_1/O
-                         net (fo=1, routed)           0.000    28.461    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_rep_i_1_n_0
-    SLICE_X53Y77         FDCE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg_rep/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_reg/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.322ns  (logic 9.291ns (32.805%)  route 19.031ns (67.195%))
-  Logic Levels:           20  (CARRY4=2 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=2 LUT5=1 LUT6=9)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    18.283 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/O[0]
-                         net (fo=1, routed)           0.939    19.222    u_CORTEXM0INTEGRATION/u_logic/p_1_in62_in
-    SLICE_X48Y97         LUT6 (Prop_lut6_I2_O)        0.295    19.517 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6/O
-                         net (fo=1, routed)           0.890    20.407    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6_n_0
-    SLICE_X48Y97         LUT6 (Prop_lut6_I1_O)        0.124    20.531 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2/O
-                         net (fo=2, routed)           0.970    21.502    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2_n_0
-    SLICE_X41Y95         LUT3 (Prop_lut3_I0_O)        0.124    21.626 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34/O
-                         net (fo=1, routed)           1.097    22.723    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34_n_0
-    SLICE_X48Y94         LUT6 (Prop_lut6_I5_O)        0.124    22.847 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28/O
-                         net (fo=1, routed)           0.302    23.149    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28_n_0
-    SLICE_X48Y93         LUT4 (Prop_lut4_I3_O)        0.124    23.273 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24/O
-                         net (fo=1, routed)           0.798    24.071    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24_n_0
-    SLICE_X48Y93         LUT6 (Prop_lut6_I5_O)        0.124    24.195 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10/O
-                         net (fo=1, routed)           0.992    25.187    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10_n_0
-    SLICE_X42Y90         LUT6 (Prop_lut6_I5_O)        0.124    25.311 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
-                         net (fo=2, routed)           0.881    26.193    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
-    SLICE_X48Y90         LUT6 (Prop_lut6_I2_O)        0.124    26.317 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14/O
-                         net (fo=2, routed)           0.934    27.250    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14_n_0
-    SLICE_X56Y77         LUT6 (Prop_lut6_I3_O)        0.124    27.374 f  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_5/O
-                         net (fo=1, routed)           0.823    28.198    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_5_n_0
-    SLICE_X56Y79         LUT6 (Prop_lut6_I3_O)        0.124    28.322 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_1/O
-                         net (fo=1, routed)           0.000    28.322    u_CORTEXM0INTEGRATION/u_logic/Oxohu6
-    SLICE_X56Y79         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_reg/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg_rep__0/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.060ns  (logic 9.291ns (33.111%)  route 18.769ns (66.889%))
-  Logic Levels:           20  (CARRY4=2 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=2 LUT5=1 LUT6=9)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    18.283 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/O[0]
-                         net (fo=1, routed)           0.939    19.222    u_CORTEXM0INTEGRATION/u_logic/p_1_in62_in
-    SLICE_X48Y97         LUT6 (Prop_lut6_I2_O)        0.295    19.517 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6/O
-                         net (fo=1, routed)           0.890    20.407    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6_n_0
-    SLICE_X48Y97         LUT6 (Prop_lut6_I1_O)        0.124    20.531 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2/O
-                         net (fo=2, routed)           0.970    21.502    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2_n_0
-    SLICE_X41Y95         LUT3 (Prop_lut3_I0_O)        0.124    21.626 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34/O
-                         net (fo=1, routed)           1.097    22.723    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34_n_0
-    SLICE_X48Y94         LUT6 (Prop_lut6_I5_O)        0.124    22.847 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28/O
-                         net (fo=1, routed)           0.302    23.149    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28_n_0
-    SLICE_X48Y93         LUT4 (Prop_lut4_I3_O)        0.124    23.273 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24/O
-                         net (fo=1, routed)           0.798    24.071    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24_n_0
-    SLICE_X48Y93         LUT6 (Prop_lut6_I5_O)        0.124    24.195 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10/O
-                         net (fo=1, routed)           0.992    25.187    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10_n_0
-    SLICE_X42Y90         LUT6 (Prop_lut6_I5_O)        0.124    25.311 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
-                         net (fo=2, routed)           0.881    26.193    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
-    SLICE_X48Y90         LUT6 (Prop_lut6_I2_O)        0.124    26.317 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14/O
-                         net (fo=2, routed)           0.917    27.233    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14_n_0
-    SLICE_X57Y77         LUT6 (Prop_lut6_I3_O)        0.124    27.357 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4/O
-                         net (fo=3, routed)           0.579    27.936    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4_n_0
-    SLICE_X53Y77         LUT6 (Prop_lut6_I2_O)        0.124    28.060 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_rep__0_i_1/O
-                         net (fo=1, routed)           0.000    28.060    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_rep__0_i_1_n_0
-    SLICE_X53Y77         FDCE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg_rep__0/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
   Destination:            u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        28.056ns  (logic 9.291ns (33.116%)  route 18.765ns (66.884%))
-  Logic Levels:           20  (CARRY4=2 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=2 LUT5=1 LUT6=9)
+  Data Path Delay:        30.371ns  (logic 9.204ns (30.305%)  route 21.167ns (69.695%))
+  Logic Levels:           22  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=1 LUT5=2 LUT6=9)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    18.283 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/O[0]
-                         net (fo=1, routed)           0.939    19.222    u_CORTEXM0INTEGRATION/u_logic/p_1_in62_in
-    SLICE_X48Y97         LUT6 (Prop_lut6_I2_O)        0.295    19.517 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6/O
-                         net (fo=1, routed)           0.890    20.407    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6_n_0
-    SLICE_X48Y97         LUT6 (Prop_lut6_I1_O)        0.124    20.531 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2/O
-                         net (fo=2, routed)           0.970    21.502    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2_n_0
-    SLICE_X41Y95         LUT3 (Prop_lut3_I0_O)        0.124    21.626 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34/O
-                         net (fo=1, routed)           1.097    22.723    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34_n_0
-    SLICE_X48Y94         LUT6 (Prop_lut6_I5_O)        0.124    22.847 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28/O
-                         net (fo=1, routed)           0.302    23.149    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28_n_0
-    SLICE_X48Y93         LUT4 (Prop_lut4_I3_O)        0.124    23.273 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24/O
-                         net (fo=1, routed)           0.798    24.071    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24_n_0
-    SLICE_X48Y93         LUT6 (Prop_lut6_I5_O)        0.124    24.195 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10/O
-                         net (fo=1, routed)           0.992    25.187    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10_n_0
-    SLICE_X42Y90         LUT6 (Prop_lut6_I5_O)        0.124    25.311 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
-                         net (fo=2, routed)           0.881    26.193    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
-    SLICE_X48Y90         LUT6 (Prop_lut6_I2_O)        0.124    26.317 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14/O
-                         net (fo=2, routed)           0.917    27.233    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_14_n_0
-    SLICE_X57Y77         LUT6 (Prop_lut6_I3_O)        0.124    27.357 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4/O
-                         net (fo=3, routed)           0.575    27.932    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4_n_0
-    SLICE_X53Y77         LUT6 (Prop_lut6_I2_O)        0.124    28.056 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_1/O
-                         net (fo=1, routed)           0.000    28.056    u_CORTEXM0INTEGRATION/u_logic/Buohu6
-    SLICE_X53Y77         FDCE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    19.742 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[1]
+                         net (fo=1, routed)           0.925    20.667    u_CORTEXM0INTEGRATION/u_logic/p_0_in65_in
+    SLICE_X42Y63         LUT6 (Prop_lut6_I2_O)        0.303    20.970 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11/O
+                         net (fo=1, routed)           0.944    21.913    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11_n_0
+    SLICE_X41Y63         LUT3 (Prop_lut3_I2_O)        0.124    22.037 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6/O
+                         net (fo=1, routed)           0.310    22.348    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6_n_0
+    SLICE_X42Y63         LUT6 (Prop_lut6_I5_O)        0.124    22.472 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2/O
+                         net (fo=2, routed)           0.990    23.461    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2_n_0
+    SLICE_X35Y62         LUT6 (Prop_lut6_I1_O)        0.124    23.585 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27/O
+                         net (fo=1, routed)           1.195    24.780    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27_n_0
+    SLICE_X35Y57         LUT5 (Prop_lut5_I0_O)        0.124    24.904 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22/O
+                         net (fo=1, routed)           0.941    25.845    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22_n_0
+    SLICE_X41Y57         LUT6 (Prop_lut6_I5_O)        0.124    25.969 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9/O
+                         net (fo=1, routed)           0.769    26.738    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9_n_0
+    SLICE_X34Y53         LUT6 (Prop_lut6_I4_O)        0.124    26.862 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
+                         net (fo=2, routed)           0.794    27.656    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
+    SLICE_X40Y53         LUT6 (Prop_lut6_I2_O)        0.124    27.780 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_15/O
+                         net (fo=2, routed)           1.458    29.238    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_15_n_0
+    SLICE_X53Y47         LUT6 (Prop_lut6_I3_O)        0.124    29.362 f  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4/O
+                         net (fo=2, routed)           0.506    29.868    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4_n_0
+    SLICE_X53Y42         LUT6 (Prop_lut6_I3_O)        0.124    29.992 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_1/O
+                         net (fo=1, routed)           0.379    30.371    u_CORTEXM0INTEGRATION/u_logic/Buohu6
+    SLICE_X53Y42         FDCE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg_rep/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        29.995ns  (logic 9.204ns (30.685%)  route 20.791ns (69.315%))
+  Logic Levels:           22  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=1 LUT5=2 LUT6=9)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    19.742 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[1]
+                         net (fo=1, routed)           0.925    20.667    u_CORTEXM0INTEGRATION/u_logic/p_0_in65_in
+    SLICE_X42Y63         LUT6 (Prop_lut6_I2_O)        0.303    20.970 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11/O
+                         net (fo=1, routed)           0.944    21.913    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11_n_0
+    SLICE_X41Y63         LUT3 (Prop_lut3_I2_O)        0.124    22.037 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6/O
+                         net (fo=1, routed)           0.310    22.348    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6_n_0
+    SLICE_X42Y63         LUT6 (Prop_lut6_I5_O)        0.124    22.472 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2/O
+                         net (fo=2, routed)           0.990    23.461    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2_n_0
+    SLICE_X35Y62         LUT6 (Prop_lut6_I1_O)        0.124    23.585 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27/O
+                         net (fo=1, routed)           1.195    24.780    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27_n_0
+    SLICE_X35Y57         LUT5 (Prop_lut5_I0_O)        0.124    24.904 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22/O
+                         net (fo=1, routed)           0.941    25.845    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22_n_0
+    SLICE_X41Y57         LUT6 (Prop_lut6_I5_O)        0.124    25.969 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9/O
+                         net (fo=1, routed)           0.769    26.738    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9_n_0
+    SLICE_X34Y53         LUT6 (Prop_lut6_I4_O)        0.124    26.862 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
+                         net (fo=2, routed)           0.794    27.656    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
+    SLICE_X40Y53         LUT6 (Prop_lut6_I2_O)        0.124    27.780 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_15/O
+                         net (fo=2, routed)           1.458    29.238    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_15_n_0
+    SLICE_X53Y47         LUT6 (Prop_lut6_I3_O)        0.124    29.362 f  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4/O
+                         net (fo=2, routed)           0.509    29.871    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_i_4_n_0
+    SLICE_X53Y42         LUT6 (Prop_lut6_I3_O)        0.124    29.995 r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_rep_i_1/O
+                         net (fo=1, routed)           0.000    29.995    u_CORTEXM0INTEGRATION/u_logic/Ydopw6_rep_i_1_n_0
+    SLICE_X53Y42         FDCE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ydopw6_reg_rep/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_reg/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        29.605ns  (logic 9.204ns (31.090%)  route 20.401ns (68.910%))
+  Logic Levels:           22  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=1 LUT5=2 LUT6=9)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    19.742 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[1]
+                         net (fo=1, routed)           0.925    20.667    u_CORTEXM0INTEGRATION/u_logic/p_0_in65_in
+    SLICE_X42Y63         LUT6 (Prop_lut6_I2_O)        0.303    20.970 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11/O
+                         net (fo=1, routed)           0.944    21.913    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11_n_0
+    SLICE_X41Y63         LUT3 (Prop_lut3_I2_O)        0.124    22.037 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6/O
+                         net (fo=1, routed)           0.310    22.348    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6_n_0
+    SLICE_X42Y63         LUT6 (Prop_lut6_I5_O)        0.124    22.472 r  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2/O
+                         net (fo=2, routed)           0.990    23.461    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2_n_0
+    SLICE_X35Y62         LUT6 (Prop_lut6_I1_O)        0.124    23.585 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27/O
+                         net (fo=1, routed)           1.195    24.780    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27_n_0
+    SLICE_X35Y57         LUT5 (Prop_lut5_I0_O)        0.124    24.904 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22/O
+                         net (fo=1, routed)           0.941    25.845    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22_n_0
+    SLICE_X41Y57         LUT6 (Prop_lut6_I5_O)        0.124    25.969 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9/O
+                         net (fo=1, routed)           0.769    26.738    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9_n_0
+    SLICE_X34Y53         LUT6 (Prop_lut6_I4_O)        0.124    26.862 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
+                         net (fo=2, routed)           0.794    27.656    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
+    SLICE_X40Y53         LUT6 (Prop_lut6_I2_O)        0.124    27.780 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_15/O
+                         net (fo=2, routed)           0.935    28.715    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_15_n_0
+    SLICE_X49Y47         LUT6 (Prop_lut6_I3_O)        0.124    28.839 f  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_5/O
+                         net (fo=1, routed)           0.642    29.481    u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_5_n_0
+    SLICE_X46Y48         LUT6 (Prop_lut6_I3_O)        0.124    29.605 r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_i_1/O
+                         net (fo=1, routed)           0.000    29.605    u_CORTEXM0INTEGRATION/u_logic/Oxohu6
+    SLICE_X46Y48         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Vgjpw6_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
   Destination:            u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        26.530ns  (logic 9.167ns (34.553%)  route 17.363ns (65.447%))
-  Logic Levels:           19  (CARRY4=2 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=3 LUT5=1 LUT6=7)
+  Data Path Delay:        28.122ns  (logic 9.080ns (32.288%)  route 19.042ns (67.712%))
+  Logic Levels:           21  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=2 LUT5=3 LUT6=6)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219    18.283 f  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/O[0]
-                         net (fo=1, routed)           0.939    19.222    u_CORTEXM0INTEGRATION/u_logic/p_1_in62_in
-    SLICE_X48Y97         LUT6 (Prop_lut6_I2_O)        0.295    19.517 f  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6/O
-                         net (fo=1, routed)           0.890    20.407    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_6_n_0
-    SLICE_X48Y97         LUT6 (Prop_lut6_I1_O)        0.124    20.531 f  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2/O
-                         net (fo=2, routed)           0.970    21.502    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_i_2_n_0
-    SLICE_X41Y95         LUT3 (Prop_lut3_I0_O)        0.124    21.626 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34/O
-                         net (fo=1, routed)           1.097    22.723    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_34_n_0
-    SLICE_X48Y94         LUT6 (Prop_lut6_I5_O)        0.124    22.847 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28/O
-                         net (fo=1, routed)           0.302    23.149    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_28_n_0
-    SLICE_X48Y93         LUT4 (Prop_lut4_I3_O)        0.124    23.273 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24/O
-                         net (fo=1, routed)           0.798    24.071    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_24_n_0
-    SLICE_X48Y93         LUT6 (Prop_lut6_I5_O)        0.124    24.195 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10/O
-                         net (fo=1, routed)           0.992    25.187    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_10_n_0
-    SLICE_X42Y90         LUT6 (Prop_lut6_I5_O)        0.124    25.311 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
-                         net (fo=2, routed)           0.306    25.617    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
-    SLICE_X43Y91         LUT4 (Prop_lut4_I3_O)        0.124    25.741 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_2/O
-                         net (fo=1, routed)           0.665    26.406    u_CORTEXM0INTEGRATION/u_logic_n_109
-    SLICE_X43Y91         LUT6 (Prop_lut6_I3_O)        0.124    26.530 r  u_CORTEXM0INTEGRATION/Bfjpw6_i_1/O
-                         net (fo=1, routed)           0.000    26.530    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_reg_1
-    SLICE_X43Y91         FDPE                                         r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    19.742 f  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[1]
+                         net (fo=1, routed)           0.925    20.667    u_CORTEXM0INTEGRATION/u_logic/p_0_in65_in
+    SLICE_X42Y63         LUT6 (Prop_lut6_I2_O)        0.303    20.970 f  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11/O
+                         net (fo=1, routed)           0.944    21.913    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_11_n_0
+    SLICE_X41Y63         LUT3 (Prop_lut3_I2_O)        0.124    22.037 f  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6/O
+                         net (fo=1, routed)           0.310    22.348    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_6_n_0
+    SLICE_X42Y63         LUT6 (Prop_lut6_I5_O)        0.124    22.472 f  u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2/O
+                         net (fo=2, routed)           0.990    23.461    u_CORTEXM0INTEGRATION/u_logic/Nlnax6_i_2_n_0
+    SLICE_X35Y62         LUT6 (Prop_lut6_I1_O)        0.124    23.585 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27/O
+                         net (fo=1, routed)           1.195    24.780    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_27_n_0
+    SLICE_X35Y57         LUT5 (Prop_lut5_I0_O)        0.124    24.904 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22/O
+                         net (fo=1, routed)           0.941    25.845    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_22_n_0
+    SLICE_X41Y57         LUT6 (Prop_lut6_I5_O)        0.124    25.969 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9/O
+                         net (fo=1, routed)           0.769    26.738    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_9_n_0
+    SLICE_X34Y53         LUT6 (Prop_lut6_I4_O)        0.124    26.862 f  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4/O
+                         net (fo=2, routed)           0.332    27.194    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_4_n_0
+    SLICE_X38Y53         LUT4 (Prop_lut4_I3_O)        0.124    27.318 r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_i_2/O
+                         net (fo=1, routed)           0.680    27.998    u_CORTEXM0INTEGRATION/u_logic_n_109
+    SLICE_X38Y53         LUT5 (Prop_lut5_I2_O)        0.124    28.122 r  u_CORTEXM0INTEGRATION/Bfjpw6_i_1/O
+                         net (fo=1, routed)           0.000    28.122    u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_reg_1
+    SLICE_X38Y53         FDPE                                         r  u_CORTEXM0INTEGRATION/u_logic/Bfjpw6_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/A3qax6_reg/D
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/I9qpw6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        24.959ns  (logic 8.766ns (35.121%)  route 16.193ns (64.879%))
-  Logic Levels:           15  (CARRY4=3 DSP48E1=2 FDRE=1 LUT2=2 LUT3=2 LUT4=1 LUT5=1 LUT6=3)
+  Data Path Delay:        27.429ns  (logic 8.370ns (30.515%)  route 19.059ns (69.485%))
+  Logic Levels:           16  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3 LUT3=1 LUT4=1 LUT5=1 LUT6=3)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    18.181 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/CO[3]
-                         net (fo=1, routed)           0.000    18.181    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12_n_0
-    SLICE_X58Y99         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    18.496 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_5/O[3]
-                         net (fo=1, routed)           0.657    19.153    u_CORTEXM0INTEGRATION/u_logic/p_0_in55_in
-    SLICE_X49Y99         LUT6 (Prop_lut6_I2_O)        0.307    19.460 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_9/O
-                         net (fo=1, routed)           1.161    20.620    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_9_n_0
-    SLICE_X49Y91         LUT3 (Prop_lut3_I2_O)        0.124    20.744 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_5/O
-                         net (fo=1, routed)           0.915    21.659    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_5_n_0
-    SLICE_X49Y95         LUT6 (Prop_lut6_I1_O)        0.124    21.783 f  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_3/O
-                         net (fo=3, routed)           0.611    22.394    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_3_n_0
-    SLICE_X45Y91         LUT3 (Prop_lut3_I2_O)        0.118    22.512 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_1/O
-                         net (fo=16, routed)          2.447    24.959    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_1_n_0
-    SLICE_X58Y103        FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/A3qax6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.630 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[0]
+                         net (fo=1, routed)           1.179    20.809    u_CORTEXM0INTEGRATION/u_logic/p_0_in97_in
+    SLICE_X41Y63         LUT6 (Prop_lut6_I2_O)        0.299    21.108 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12/O
+                         net (fo=1, routed)           0.941    22.049    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12_n_0
+    SLICE_X41Y60         LUT3 (Prop_lut3_I2_O)        0.124    22.173 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6/O
+                         net (fo=1, routed)           0.991    23.164    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6_n_0
+    SLICE_X40Y62         LUT6 (Prop_lut6_I5_O)        0.124    23.288 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2/O
+                         net (fo=2, routed)           1.633    24.921    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2_n_0
+    SLICE_X34Y64         LUT2 (Prop_lut2_I0_O)        0.150    25.071 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_1/O
+                         net (fo=16, routed)          2.358    27.429    u_CORTEXM0INTEGRATION/u_logic/Gfniu6
+    SLICE_X47Y68         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/I9qpw6_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/A1qax6_reg/D
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/R7ibx6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        24.913ns  (logic 8.716ns (34.986%)  route 16.197ns (65.014%))
-  Logic Levels:           15  (CARRY4=3 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=1 LUT5=2 LUT6=3)
+  Data Path Delay:        27.271ns  (logic 8.370ns (30.692%)  route 18.901ns (69.308%))
+  Logic Levels:           16  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3 LUT3=1 LUT4=1 LUT5=1 LUT6=3)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    18.181 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/CO[3]
-                         net (fo=1, routed)           0.000    18.181    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12_n_0
-    SLICE_X58Y99         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    18.420 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_5/O[2]
-                         net (fo=1, routed)           0.617    19.037    u_CORTEXM0INTEGRATION/u_logic/p_0_in173_in
-    SLICE_X52Y97         LUT6 (Prop_lut6_I2_O)        0.301    19.338 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_7/O
-                         net (fo=1, routed)           0.800    20.137    u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_7_n_0
-    SLICE_X52Y95         LUT3 (Prop_lut3_I2_O)        0.124    20.261 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_4/O
-                         net (fo=1, routed)           0.763    21.024    u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_4_n_0
-    SLICE_X48Y96         LUT6 (Prop_lut6_I2_O)        0.124    21.148 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_2/O
-                         net (fo=2, routed)           1.147    22.295    u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_2_n_0
-    SLICE_X42Y93         LUT5 (Prop_lut5_I0_O)        0.150    22.445 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_1/O
-                         net (fo=16, routed)          2.468    24.913    u_CORTEXM0INTEGRATION/u_logic/K39iu6
-    SLICE_X58Y99         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/A1qax6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.630 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[0]
+                         net (fo=1, routed)           1.179    20.809    u_CORTEXM0INTEGRATION/u_logic/p_0_in97_in
+    SLICE_X41Y63         LUT6 (Prop_lut6_I2_O)        0.299    21.108 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12/O
+                         net (fo=1, routed)           0.941    22.049    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12_n_0
+    SLICE_X41Y60         LUT3 (Prop_lut3_I2_O)        0.124    22.173 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6/O
+                         net (fo=1, routed)           0.991    23.164    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6_n_0
+    SLICE_X40Y62         LUT6 (Prop_lut6_I5_O)        0.124    23.288 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2/O
+                         net (fo=2, routed)           1.633    24.921    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2_n_0
+    SLICE_X34Y64         LUT2 (Prop_lut2_I0_O)        0.150    25.071 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_1/O
+                         net (fo=16, routed)          2.200    27.271    u_CORTEXM0INTEGRATION/u_logic/Gfniu6
+    SLICE_X48Y68         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/R7ibx6_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/Ehnpw6_reg/D
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Rjibx6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        24.770ns  (logic 8.766ns (35.390%)  route 16.004ns (64.610%))
-  Logic Levels:           15  (CARRY4=3 DSP48E1=2 FDRE=1 LUT2=2 LUT3=2 LUT4=1 LUT5=1 LUT6=3)
+  Data Path Delay:        27.240ns  (logic 8.370ns (30.727%)  route 18.870ns (69.273%))
+  Logic Levels:           16  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3 LUT3=1 LUT4=1 LUT5=1 LUT6=3)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    18.181 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/CO[3]
-                         net (fo=1, routed)           0.000    18.181    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12_n_0
-    SLICE_X58Y99         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    18.496 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_5/O[3]
-                         net (fo=1, routed)           0.657    19.153    u_CORTEXM0INTEGRATION/u_logic/p_0_in55_in
-    SLICE_X49Y99         LUT6 (Prop_lut6_I2_O)        0.307    19.460 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_9/O
-                         net (fo=1, routed)           1.161    20.620    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_9_n_0
-    SLICE_X49Y91         LUT3 (Prop_lut3_I2_O)        0.124    20.744 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_5/O
-                         net (fo=1, routed)           0.915    21.659    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_5_n_0
-    SLICE_X49Y95         LUT6 (Prop_lut6_I1_O)        0.124    21.783 f  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_3/O
-                         net (fo=3, routed)           0.611    22.394    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_3_n_0
-    SLICE_X45Y91         LUT3 (Prop_lut3_I2_O)        0.118    22.512 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_1/O
-                         net (fo=16, routed)          2.258    24.770    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_1_n_0
-    SLICE_X59Y103        FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ehnpw6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.630 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[0]
+                         net (fo=1, routed)           1.179    20.809    u_CORTEXM0INTEGRATION/u_logic/p_0_in97_in
+    SLICE_X41Y63         LUT6 (Prop_lut6_I2_O)        0.299    21.108 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12/O
+                         net (fo=1, routed)           0.941    22.049    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12_n_0
+    SLICE_X41Y60         LUT3 (Prop_lut3_I2_O)        0.124    22.173 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6/O
+                         net (fo=1, routed)           0.991    23.164    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6_n_0
+    SLICE_X40Y62         LUT6 (Prop_lut6_I5_O)        0.124    23.288 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2/O
+                         net (fo=2, routed)           1.633    24.921    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2_n_0
+    SLICE_X34Y64         LUT2 (Prop_lut2_I0_O)        0.150    25.071 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_1/O
+                         net (fo=16, routed)          2.169    27.240    u_CORTEXM0INTEGRATION/u_logic/Gfniu6
+    SLICE_X46Y68         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Rjibx6_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/Rrvax6_reg/D
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Rnibx6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        24.703ns  (logic 8.766ns (35.486%)  route 15.937ns (64.514%))
-  Logic Levels:           15  (CARRY4=3 DSP48E1=2 FDRE=1 LUT2=2 LUT3=2 LUT4=1 LUT5=1 LUT6=3)
+  Data Path Delay:        27.221ns  (logic 8.370ns (30.748%)  route 18.851ns (69.252%))
+  Logic Levels:           16  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3 LUT3=1 LUT4=1 LUT5=1 LUT6=3)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    18.181 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/CO[3]
-                         net (fo=1, routed)           0.000    18.181    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12_n_0
-    SLICE_X58Y99         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315    18.496 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_5/O[3]
-                         net (fo=1, routed)           0.657    19.153    u_CORTEXM0INTEGRATION/u_logic/p_0_in55_in
-    SLICE_X49Y99         LUT6 (Prop_lut6_I2_O)        0.307    19.460 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_9/O
-                         net (fo=1, routed)           1.161    20.620    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_9_n_0
-    SLICE_X49Y91         LUT3 (Prop_lut3_I2_O)        0.124    20.744 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_5/O
-                         net (fo=1, routed)           0.915    21.659    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_5_n_0
-    SLICE_X49Y95         LUT6 (Prop_lut6_I1_O)        0.124    21.783 f  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_3/O
-                         net (fo=3, routed)           0.611    22.394    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_3_n_0
-    SLICE_X45Y91         LUT3 (Prop_lut3_I2_O)        0.118    22.512 r  u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_1/O
-                         net (fo=16, routed)          2.191    24.703    u_CORTEXM0INTEGRATION/u_logic/S3nax6_i_1_n_0
-    SLICE_X57Y104        FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Rrvax6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.630 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[0]
+                         net (fo=1, routed)           1.179    20.809    u_CORTEXM0INTEGRATION/u_logic/p_0_in97_in
+    SLICE_X41Y63         LUT6 (Prop_lut6_I2_O)        0.299    21.108 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12/O
+                         net (fo=1, routed)           0.941    22.049    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12_n_0
+    SLICE_X41Y60         LUT3 (Prop_lut3_I2_O)        0.124    22.173 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6/O
+                         net (fo=1, routed)           0.991    23.164    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6_n_0
+    SLICE_X40Y62         LUT6 (Prop_lut6_I5_O)        0.124    23.288 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2/O
+                         net (fo=2, routed)           1.633    24.921    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2_n_0
+    SLICE_X34Y64         LUT2 (Prop_lut2_I0_O)        0.150    25.071 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_1/O
+                         net (fo=16, routed)          2.151    27.221    u_CORTEXM0INTEGRATION/u_logic/Gfniu6
+    SLICE_X46Y69         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Rnibx6_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            u_CORTEXM0INTEGRATION/u_logic/Weipw6_reg/D
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/R9ibx6_reg/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        24.534ns  (logic 8.716ns (35.526%)  route 15.818ns (64.474%))
-  Logic Levels:           15  (CARRY4=3 DSP48E1=2 FDRE=1 LUT2=2 LUT3=1 LUT4=1 LUT5=2 LUT6=3)
+  Data Path Delay:        27.091ns  (logic 8.370ns (30.896%)  route 18.721ns (69.104%))
+  Logic Levels:           16  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3 LUT3=1 LUT4=1 LUT5=1 LUT6=3)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y87         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/C
-    SLICE_X60Y87         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  u_CORTEXM0INTEGRATION/u_logic/Shopw6_reg/Q
-                         net (fo=172, routed)         3.918     4.436    u_CORTEXM0INTEGRATION/u_logic/Shopw6
-    SLICE_X58Y103        LUT4 (Prop_lut4_I0_O)        0.146     4.582 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154/O
-                         net (fo=15, routed)          1.754     6.336    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_154_n_0
-    SLICE_X51Y105        LUT5 (Prop_lut5_I1_O)        0.328     6.664 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48/O
-                         net (fo=1, routed)           0.870     7.534    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_48_n_0
-    SLICE_X50Y105        LUT6 (Prop_lut6_I5_O)        0.124     7.658 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24/O
-                         net (fo=6, routed)           1.343     9.001    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_24_n_0
-    SLICE_X57Y97         LUT2 (Prop_lut2_I0_O)        0.152     9.153 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_5/O
-                         net (fo=17, routed)          1.186    10.339    u_CORTEXM0INTEGRATION/u_logic/Mifpw6[14]
-    DSP48_X1Y37          DSP48E1 (Prop_dsp48e1_A[14]_PCOUT[47])
-                                                      4.238    14.577 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
-                         net (fo=1, routed)           0.002    14.579    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
-    DSP48_X1Y38          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
-                                                      1.518    16.097 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[3]
-                         net (fo=2, routed)           1.329    17.427    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_102
-    SLICE_X58Y97         LUT2 (Prop_lut2_I0_O)        0.124    17.551 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19/O
-                         net (fo=1, routed)           0.000    17.551    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_i_19_n_0
-    SLICE_X58Y97         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513    18.064 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
-                         net (fo=1, routed)           0.000    18.064    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
-    SLICE_X58Y98         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    18.181 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12/CO[3]
-                         net (fo=1, routed)           0.000    18.181    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_12_n_0
-    SLICE_X58Y99         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239    18.420 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_5/O[2]
-                         net (fo=1, routed)           0.617    19.037    u_CORTEXM0INTEGRATION/u_logic/p_0_in173_in
-    SLICE_X52Y97         LUT6 (Prop_lut6_I2_O)        0.301    19.338 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_7/O
-                         net (fo=1, routed)           0.800    20.137    u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_7_n_0
-    SLICE_X52Y95         LUT3 (Prop_lut3_I2_O)        0.124    20.261 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_4/O
-                         net (fo=1, routed)           0.763    21.024    u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_4_n_0
-    SLICE_X48Y96         LUT6 (Prop_lut6_I2_O)        0.124    21.148 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_2/O
-                         net (fo=2, routed)           1.147    22.295    u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_2_n_0
-    SLICE_X42Y93         LUT5 (Prop_lut5_I0_O)        0.150    22.445 r  u_CORTEXM0INTEGRATION/u_logic/S1nax6_i_1/O
-                         net (fo=16, routed)          2.089    24.534    u_CORTEXM0INTEGRATION/u_logic/K39iu6
-    SLICE_X60Y100        FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Weipw6_reg/D
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.630 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[0]
+                         net (fo=1, routed)           1.179    20.809    u_CORTEXM0INTEGRATION/u_logic/p_0_in97_in
+    SLICE_X41Y63         LUT6 (Prop_lut6_I2_O)        0.299    21.108 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12/O
+                         net (fo=1, routed)           0.941    22.049    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12_n_0
+    SLICE_X41Y60         LUT3 (Prop_lut3_I2_O)        0.124    22.173 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6/O
+                         net (fo=1, routed)           0.991    23.164    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6_n_0
+    SLICE_X40Y62         LUT6 (Prop_lut6_I5_O)        0.124    23.288 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2/O
+                         net (fo=2, routed)           1.633    24.921    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2_n_0
+    SLICE_X34Y64         LUT2 (Prop_lut2_I0_O)        0.150    25.071 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_1/O
+                         net (fo=16, routed)          2.020    27.091    u_CORTEXM0INTEGRATION/u_logic/Gfniu6
+    SLICE_X47Y69         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/R9ibx6_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Rhibx6_reg/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        27.067ns  (logic 8.370ns (30.923%)  route 18.697ns (69.077%))
+  Logic Levels:           16  (CARRY4=4 DSP48E1=2 FDRE=1 LUT2=3 LUT3=1 LUT4=1 LUT5=1 LUT6=3)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X48Y50         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/C
+    SLICE_X48Y50         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  u_CORTEXM0INTEGRATION/u_logic/Vhspw6_reg/Q
+                         net (fo=177, routed)         5.817     6.273    u_CORTEXM0INTEGRATION/u_logic/Vhspw6
+    SLICE_X52Y66         LUT4 (Prop_lut4_I0_O)        0.124     6.397 f  u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74/O
+                         net (fo=10, routed)          2.518     8.915    u_CORTEXM0INTEGRATION/u_logic/Affpw60_i_74_n_0
+    SLICE_X49Y63         LUT5 (Prop_lut5_I3_O)        0.124     9.039 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40/O
+                         net (fo=1, routed)           0.870     9.910    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_40_n_0
+    SLICE_X48Y63         LUT6 (Prop_lut6_I5_O)        0.124    10.034 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20/O
+                         net (fo=2, routed)           1.035    11.069    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_20_n_0
+    SLICE_X54Y59         LUT2 (Prop_lut2_I0_O)        0.148    11.217 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_i_1/O
+                         net (fo=1, routed)           0.581    11.797    u_CORTEXM0INTEGRATION/u_logic/Tgfpw6[16]
+    DSP48_X1Y23          DSP48E1 (Prop_dsp48e1_B[16]_PCOUT[47])
+                                                      4.055    15.852 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__0/PCOUT[47]
+                         net (fo=1, routed)           0.002    15.854    u_CORTEXM0INTEGRATION/u_logic/Affpw60__0_n_106
+    DSP48_X1Y24          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    17.372 r  u_CORTEXM0INTEGRATION/u_logic/Affpw60__1/P[0]
+                         net (fo=2, routed)           1.133    18.506    u_CORTEXM0INTEGRATION/u_logic/Affpw60__1_n_105
+    SLICE_X57Y61         LUT2 (Prop_lut2_I0_O)        0.124    18.630 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9/O
+                         net (fo=1, routed)           0.000    18.630    u_CORTEXM0INTEGRATION/u_logic/Nznax6_i_9_n_0
+    SLICE_X57Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    19.180 r  u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6/CO[3]
+                         net (fo=1, routed)           0.000    19.180    u_CORTEXM0INTEGRATION/u_logic/Nznax6_reg_i_6_n_0
+    SLICE_X57Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.294 r  u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14/CO[3]
+                         net (fo=1, routed)           0.000    19.294    u_CORTEXM0INTEGRATION/u_logic/Nrnax6_reg_i_14_n_0
+    SLICE_X57Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    19.408 r  u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13/CO[3]
+                         net (fo=1, routed)           0.000    19.408    u_CORTEXM0INTEGRATION/u_logic/Nfnax6_reg_i_13_n_0
+    SLICE_X57Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    19.630 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_reg_i_14/O[0]
+                         net (fo=1, routed)           1.179    20.809    u_CORTEXM0INTEGRATION/u_logic/p_0_in97_in
+    SLICE_X41Y63         LUT6 (Prop_lut6_I2_O)        0.299    21.108 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12/O
+                         net (fo=1, routed)           0.941    22.049    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_12_n_0
+    SLICE_X41Y60         LUT3 (Prop_lut3_I2_O)        0.124    22.173 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6/O
+                         net (fo=1, routed)           0.991    23.164    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_6_n_0
+    SLICE_X40Y62         LUT6 (Prop_lut6_I5_O)        0.124    23.288 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2/O
+                         net (fo=2, routed)           1.633    24.921    u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_2_n_0
+    SLICE_X34Y64         LUT2 (Prop_lut2_I0_O)        0.150    25.071 r  u_CORTEXM0INTEGRATION/u_logic/Rribx6_i_1/O
+                         net (fo=16, routed)          1.997    27.067    u_CORTEXM0INTEGRATION/u_logic/Gfniu6
+    SLICE_X48Y69         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Rhibx6_reg/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -921,6 +954,74 @@ Slack:                    inf
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 uAHBUART/uUART_RX/data_reg_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMA/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.197ns  (logic 0.141ns (71.611%)  route 0.056ns (28.389%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y61         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[0]/C
+    SLICE_X15Y61         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBUART/uUART_RX/data_reg_reg[0]/Q
+                         net (fo=1, routed)           0.056     0.197    uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/DIA0
+    SLICE_X14Y61         RAMD32                                       r  uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMA/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 uAHBUART/uUART_RX/data_reg_reg[4]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMC/I
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.203ns  (logic 0.128ns (63.063%)  route 0.075ns (36.937%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y61         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[4]/C
+    SLICE_X15Y61         FDCE (Prop_fdce_C_Q)         0.128     0.128 r  uAHBUART/uUART_RX/data_reg_reg[4]/Q
+                         net (fo=2, routed)           0.075     0.203    uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/DIC0
+    SLICE_X14Y61         RAMD32                                       r  uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMC/I
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 uAHBGPIO/gpio_datain_reg[1]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            uAHBGPIO/previous_switch_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.208ns  (logic 0.141ns (67.788%)  route 0.067ns (32.212%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X29Y69         FDCE                         0.000     0.000 r  uAHBGPIO/gpio_datain_reg[1]/C
+    SLICE_X29Y69         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBGPIO/gpio_datain_reg[1]/Q
+                         net (fo=3, routed)           0.067     0.208    uAHBGPIO/gpio_datain[1]
+    SLICE_X29Y69         FDCE                                         r  uAHBGPIO/previous_switch_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 uAHBGPIO/gpio_datain_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            uAHBGPIO/previous_switch_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.209ns  (logic 0.141ns (67.433%)  route 0.068ns (32.567%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X29Y69         FDCE                         0.000     0.000 r  uAHBGPIO/gpio_datain_reg[0]/C
+    SLICE_X29Y69         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBGPIO/gpio_datain_reg[0]/Q
+                         net (fo=3, routed)           0.068     0.209    uAHBGPIO/gpio_datain[0]
+    SLICE_X29Y69         FDCE                                         r  uAHBGPIO/previous_switch_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
 Slack:                    inf
   Source:                 uAHBVGA/uVGAInterface/FreqDivider/counter_reg[0]/C
                             (rising edge-triggered cell FDRE)
@@ -932,167 +1033,101 @@ Slack:                    inf
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X14Y82         FDRE                         0.000     0.000 r  uAHBVGA/uVGAInterface/FreqDivider/counter_reg[0]/C
-    SLICE_X14Y82         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  uAHBVGA/uVGAInterface/FreqDivider/counter_reg[0]/Q
+    SLICE_X12Y81         FDRE                         0.000     0.000 r  uAHBVGA/uVGAInterface/FreqDivider/counter_reg[0]/C
+    SLICE_X12Y81         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  uAHBVGA/uVGAInterface/FreqDivider/counter_reg[0]/Q
                          net (fo=2, routed)           0.067     0.231    uAHBVGA/uVGAInterface/FreqDivider/counter_reg_n_0_[0]
-    SLICE_X14Y82         FDRE                                         r  uAHBVGA/uVGAInterface/FreqDivider/triggerout_reg/D
+    SLICE_X12Y81         FDRE                                         r  uAHBVGA/uVGAInterface/FreqDivider/triggerout_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 uAHBTIMER/load_reg[9]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBTIMER/value_reg[9]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.249ns  (logic 0.186ns (74.680%)  route 0.063ns (25.320%))
-  Logic Levels:           2  (FDCE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X40Y71         FDCE                         0.000     0.000 r  uAHBTIMER/load_reg[9]/C
-    SLICE_X40Y71         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBTIMER/load_reg[9]/Q
-                         net (fo=2, routed)           0.063     0.204    uAHBTIMER/load_reg[30]_0[8]
-    SLICE_X41Y71         LUT5 (Prop_lut5_I1_O)        0.045     0.249 r  uAHBTIMER/value[9]_i_1/O
-                         net (fo=1, routed)           0.000     0.249    uAHBTIMER/value[9]_i_1_n_0
-    SLICE_X41Y71         FDCE                                         r  uAHBTIMER/value_reg[9]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 uAHBUART/uUART_RX/data_reg_reg[0]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMA/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.261ns  (logic 0.141ns (54.044%)  route 0.120ns (45.956%))
-  Logic Levels:           1  (FDCE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X36Y69         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[0]/C
-    SLICE_X36Y69         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBUART/uUART_RX/data_reg_reg[0]/Q
-                         net (fo=1, routed)           0.120     0.261    uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/DIA0
-    SLICE_X38Y70         RAMD32                                       r  uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMA/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 uAHBUART/uUART_RX/data_reg_reg[4]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMC/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.265ns  (logic 0.128ns (48.342%)  route 0.137ns (51.658%))
-  Logic Levels:           1  (FDCE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X36Y69         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[4]/C
-    SLICE_X36Y69         FDCE (Prop_fdce_C_Q)         0.128     0.128 r  uAHBUART/uUART_RX/data_reg_reg[4]/Q
-                         net (fo=2, routed)           0.137     0.265    uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/DIC0
-    SLICE_X38Y70         RAMD32                                       r  uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMC/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_sync_reg_reg[0]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            reset_sync_reg_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.267ns  (logic 0.148ns (55.377%)  route 0.119ns (44.623%))
-  Logic Levels:           1  (FDCE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X14Y86         FDCE                         0.000     0.000 r  reset_sync_reg_reg[0]/C
-    SLICE_X14Y86         FDCE (Prop_fdce_C_Q)         0.148     0.148 r  reset_sync_reg_reg[0]/Q
-                         net (fo=1, routed)           0.119     0.267    reset_sync_reg_reg_n_0_[0]
-    SLICE_X14Y86         FDCE                                         r  reset_sync_reg_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 uAHBUART/uUART_RX/data_reg_reg[5]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMC_D1/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.270ns  (logic 0.128ns (47.490%)  route 0.142ns (52.510%))
-  Logic Levels:           1  (FDCE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X36Y69         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[5]/C
-    SLICE_X36Y69         FDCE (Prop_fdce_C_Q)         0.128     0.128 r  uAHBUART/uUART_RX/data_reg_reg[5]/Q
-                         net (fo=2, routed)           0.142     0.270    uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/DIC1
-    SLICE_X38Y70         RAMD32                                       r  uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMC_D1/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 uAHBUART/uUART_RX/data_reg_reg[1]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMA_D1/I
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.270ns  (logic 0.141ns (52.214%)  route 0.129ns (47.786%))
-  Logic Levels:           1  (FDCE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X36Y69         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[1]/C
-    SLICE_X36Y69         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBUART/uUART_RX/data_reg_reg[1]/Q
-                         net (fo=2, routed)           0.129     0.270    uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/DIA1
-    SLICE_X38Y70         RAMD32                                       r  uAHBUART/uFIFO_RX/array_reg_reg_0_15_0_5/RAMA_D1/I
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 uAHBVGA/uVGAInterface/addrh_reg[1]/C
+  Source:                 uAHBVGA/uVGAInterface/HorzAddrCounter/counter_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            uAHBVGA/uvga_console/pixel_x1_reg[1]/D
+  Destination:            uAHBVGA/uVGAInterface/addrh_reg[3]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.270ns  (logic 0.128ns (47.394%)  route 0.142ns (52.606%))
+  Data Path Delay:        0.247ns  (logic 0.128ns (51.872%)  route 0.119ns (48.128%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y81         FDRE                         0.000     0.000 r  uAHBVGA/uVGAInterface/addrh_reg[1]/C
-    SLICE_X13Y81         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  uAHBVGA/uVGAInterface/addrh_reg[1]/Q
-                         net (fo=1, routed)           0.142     0.270    uAHBVGA/uvga_console/ram_reg_0[1]
-    SLICE_X13Y80         FDRE                                         r  uAHBVGA/uvga_console/pixel_x1_reg[1]/D
+    SLICE_X15Y79         FDRE                         0.000     0.000 r  uAHBVGA/uVGAInterface/HorzAddrCounter/counter_reg[3]/C
+    SLICE_X15Y79         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  uAHBVGA/uVGAInterface/HorzAddrCounter/counter_reg[3]/Q
+                         net (fo=6, routed)           0.119     0.247    uAHBVGA/uVGAInterface/HorzCount[3]
+    SLICE_X14Y79         FDRE                                         r  uAHBVGA/uVGAInterface/addrh_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 uAHBUART/uUART_RX/data_reg_reg[5]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBUART/uUART_RX/data_reg_reg[4]/D
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Tmjbx6_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Uojbx6_reg/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.270ns  (logic 0.128ns (47.383%)  route 0.142ns (52.617%))
+  Data Path Delay:        0.248ns  (logic 0.186ns (74.990%)  route 0.062ns (25.010%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X28Y42         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Tmjbx6_reg/C
+    SLICE_X28Y42         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_CORTEXM0INTEGRATION/u_logic/Tmjbx6_reg/Q
+                         net (fo=2, routed)           0.062     0.203    u_CORTEXM0INTEGRATION/u_logic/Tmjbx6
+    SLICE_X29Y42         LUT6 (Prop_lut6_I1_O)        0.045     0.248 r  u_CORTEXM0INTEGRATION/u_logic/Uojbx6_i_1/O
+                         net (fo=1, routed)           0.000     0.248    u_CORTEXM0INTEGRATION/u_logic/Mcuhu6
+    SLICE_X29Y42         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Uojbx6_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Rq0qw6_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Ss0qw6_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.252ns  (logic 0.186ns (73.740%)  route 0.066ns (26.260%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y41         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Rq0qw6_reg/C
+    SLICE_X31Y41         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_CORTEXM0INTEGRATION/u_logic/Rq0qw6_reg/Q
+                         net (fo=2, routed)           0.066     0.207    u_CORTEXM0INTEGRATION/u_logic/Rq0qw6
+    SLICE_X30Y41         LUT6 (Prop_lut6_I1_O)        0.045     0.252 r  u_CORTEXM0INTEGRATION/u_logic/Ss0qw6_i_1/O
+                         net (fo=1, routed)           0.000     0.252    u_CORTEXM0INTEGRATION/u_logic/Tcuhu6
+    SLICE_X30Y41         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Ss0qw6_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 u_CORTEXM0INTEGRATION/u_logic/Vlxax6_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            u_CORTEXM0INTEGRATION/u_logic/Kzabx6_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.254ns  (logic 0.186ns (73.160%)  route 0.068ns (26.840%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X31Y41         FDRE                         0.000     0.000 r  u_CORTEXM0INTEGRATION/u_logic/Vlxax6_reg/C
+    SLICE_X31Y41         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  u_CORTEXM0INTEGRATION/u_logic/Vlxax6_reg/Q
+                         net (fo=2, routed)           0.068     0.209    u_CORTEXM0INTEGRATION/u_logic/Vlxax6
+    SLICE_X30Y41         LUT6 (Prop_lut6_I1_O)        0.045     0.254 r  u_CORTEXM0INTEGRATION/u_logic/Kzabx6_i_1/O
+                         net (fo=1, routed)           0.000     0.254    u_CORTEXM0INTEGRATION/u_logic/Jeuhu6
+    SLICE_X30Y41         FDRE                                         r  u_CORTEXM0INTEGRATION/u_logic/Kzabx6_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 uAHBUART/uUART_RX/data_reg_reg[3]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            uAHBUART/uUART_RX/data_reg_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.255ns  (logic 0.141ns (55.285%)  route 0.114ns (44.715%))
   Logic Levels:           1  (FDCE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y69         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[5]/C
-    SLICE_X36Y69         FDCE (Prop_fdce_C_Q)         0.128     0.128 r  uAHBUART/uUART_RX/data_reg_reg[5]/Q
-                         net (fo=2, routed)           0.142     0.270    uAHBUART/uUART_RX/Q[5]
-    SLICE_X36Y69         FDCE                                         r  uAHBUART/uUART_RX/data_reg_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 uAHBTIMER/load_reg[5]/C
-                            (rising edge-triggered cell FDCE)
-  Destination:            uAHBTIMER/value_reg[5]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.271ns  (logic 0.209ns (77.036%)  route 0.062ns (22.964%))
-  Logic Levels:           2  (FDCE=1 LUT5=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y70         FDCE                         0.000     0.000 r  uAHBTIMER/load_reg[5]/C
-    SLICE_X42Y70         FDCE (Prop_fdce_C_Q)         0.164     0.164 r  uAHBTIMER/load_reg[5]/Q
-                         net (fo=2, routed)           0.062     0.226    uAHBTIMER/load_reg[30]_0[4]
-    SLICE_X43Y70         LUT5 (Prop_lut5_I1_O)        0.045     0.271 r  uAHBTIMER/value[5]_i_1/O
-                         net (fo=1, routed)           0.000     0.271    uAHBTIMER/value[5]_i_1_n_0
-    SLICE_X43Y70         FDCE                                         r  uAHBTIMER/value_reg[5]/D
+    SLICE_X15Y61         FDCE                         0.000     0.000 r  uAHBUART/uUART_RX/data_reg_reg[3]/C
+    SLICE_X15Y61         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  uAHBUART/uUART_RX/data_reg_reg[3]/Q
+                         net (fo=2, routed)           0.114     0.255    uAHBUART/uUART_RX/Q[3]
+    SLICE_X15Y61         FDCE                                         r  uAHBUART/uUART_RX/data_reg_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 

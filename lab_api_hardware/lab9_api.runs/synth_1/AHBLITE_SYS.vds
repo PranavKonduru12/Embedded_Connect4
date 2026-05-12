@@ -2,8 +2,8 @@
 # Vivado v2021.2 (64-bit)
 # SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
 # IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
-# Start of session at: Sat May  2 17:04:15 2026
-# Process ID: 32852
+# Start of session at: Mon May 11 18:33:32 2026
+# Process ID: 24216
 # Current directory: C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.runs/synth_1
 # Command line: vivado.exe -log AHBLITE_SYS.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AHBLITE_SYS.tcl
 # Log file: C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.runs/synth_1/AHBLITE_SYS.vds
@@ -23,19 +23,19 @@ WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis b
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 37484
+INFO: [Synth 8-7075] Helper process launched with PID 4612
 WARNING: [Synth 8-2292] literal value truncated to fit in 4 bits [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:145]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1452.840 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1451.594 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'AHBLITE_SYS' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:37]
+INFO: [Synth 8-6157] synthesizing module 'AHBLITE_SYS' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v:37]
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [D:/Xilinx/Vivado/2021.2/scripts/rt/data/unisim_comp.v:1083]
 INFO: [Synth 8-6155] done synthesizing module 'BUFG' (1#1) [D:/Xilinx/Vivado/2021.2/scripts/rt/data/unisim_comp.v:1083]
 INFO: [Synth 8-6157] synthesizing module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v:29]
 INFO: [Synth 8-6157] synthesizing module 'cortexm0ds_logic' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v:27]
 INFO: [Synth 8-6155] done synthesizing module 'cortexm0ds_logic' (2#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/cortexm0ds_logic.v:27]
 INFO: [Synth 8-6155] done synthesizing module 'CORTEXM0INTEGRATION' (3#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/CortexM0-DS/CORTEXM0INTEGRATION.v:29]
-WARNING: [Synth 8-689] width (2) of port connection 'HRESP' does not match port width (1) of module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:201]
+WARNING: [Synth 8-689] width (2) of port connection 'HRESP' does not match port width (1) of module 'CORTEXM0INTEGRATION' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v:203]
 INFO: [Synth 8-6157] synthesizing module 'AHBDCD' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v:38]
 INFO: [Synth 8-6155] done synthesizing module 'AHBDCD' (4#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v:38]
 INFO: [Synth 8-6157] synthesizing module 'AHBMUX' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v:38]
@@ -106,11 +106,12 @@ INFO: [Synth 8-6157] synthesizing module 'AHBTIMER' [C:/LocalWorkspace/EE277A/Em
 INFO: [Synth 8-6157] synthesizing module 'prescaler' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v:37]
 INFO: [Synth 8-6155] done synthesizing module 'prescaler' (20#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/prescaler.v:37]
 INFO: [Synth 8-6155] done synthesizing module 'AHBTIMER' (21#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:38]
-INFO: [Synth 8-6157] synthesizing module 'AHBGPIO' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V:1]
-INFO: [Synth 8-6155] done synthesizing module 'AHBGPIO' (22#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V:1]
-WARNING: [Synth 8-3848] Net TCK in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:211]
-WARNING: [Synth 8-3848] Net TDI in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:213]
-INFO: [Synth 8-6155] done synthesizing module 'AHBLITE_SYS' (23#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v:37]
+INFO: [Synth 8-6157] synthesizing module 'AHBGPIO' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_interrupt_multiple_switches_Pranav.v:1026]
+INFO: [Synth 8-6155] done synthesizing module 'AHBGPIO' (22#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_interrupt_multiple_switches_Pranav.v:1026]
+WARNING: [Synth 8-689] width (8) of port connection 'GPIOOUT' does not match port width (16) of module 'AHBGPIO' [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v:413]
+WARNING: [Synth 8-3848] Net TCK in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v:213]
+WARNING: [Synth 8-3848] Net TDI in module/entity AHBLITE_SYS does not have driver. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v:215]
+INFO: [Synth 8-6155] done synthesizing module 'AHBLITE_SYS' (23#1) [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v:37]
 WARNING: [Synth 8-7129] Port HWDATA[31] in module AHBGPIO is either unconnected or has no load
 WARNING: [Synth 8-7129] Port HWDATA[30] in module AHBGPIO is either unconnected or has no load
 WARNING: [Synth 8-7129] Port HWDATA[29] in module AHBGPIO is either unconnected or has no load
@@ -213,18 +214,18 @@ WARNING: [Synth 8-7129] Port HRDATA[4] in module AHBVGA is either unconnected or
 WARNING: [Synth 8-7129] Port HRDATA[3] in module AHBVGA is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1643.594 ; gain = 190.754
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1627.723 ; gain = 176.129
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1643.594 ; gain = 190.754
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1627.723 ; gain = 176.129
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1643.594 ; gain = 190.754
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1627.723 ; gain = 176.129
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1643.594 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1627.723 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -235,28 +236,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/AHBLITE_SYS_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1683.121 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1642.863 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 1683.121 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1642.863 ; gain = 0.000
 WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1683.121 ; gain = 230.281
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1642.863 ; gain = 191.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1683.121 ; gain = 230.281
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1642.863 ; gain = 191.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1683.121 ; gain = 230.281
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1642.863 ; gain = 191.270
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '24' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/AHBVGASYS.v:86]
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'UART_RX'
@@ -264,7 +265,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in modul
 WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v:104]
 WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '4' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v:83]
 WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '4' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v:102]
-WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V:34]
+WARNING: [Synth 8-3936] Found unconnected internal register 'last_HADDR_reg' and it is trimmed from '32' to '8' bits. [C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_interrupt_multiple_switches_Pranav.v:1065]
 INFO: [Synth 8-3971] The signal "dual_port_ram_sync:/ram_reg" was recognized as a true dual port RAM template.
 INFO: [Synth 8-3971] The signal "dual_port_ram_sync__parameterized0:/ram_reg" was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------------------------
@@ -286,7 +287,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using e
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'UART_TX'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1683.121 ; gain = 230.281
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1642.863 ; gain = 191.270
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -314,7 +315,7 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 4     
 	               24 Bit    Registers := 1     
 	               22 Bit    Registers := 1     
-	               16 Bit    Registers := 2     
+	               16 Bit    Registers := 4     
 	               15 Bit    Registers := 3     
 	               12 Bit    Registers := 2     
 	               11 Bit    Registers := 1     
@@ -325,7 +326,7 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 12    
 	                3 Bit    Registers := 3     
 	                2 Bit    Registers := 6     
-	                1 Bit    Registers := 1367  
+	                1 Bit    Registers := 1369  
 +---RAMs : 
 	             256K Bit	(32768 X 8 bit)          RAMs := 1     
 	             128K Bit	(4096 X 32 bit)          RAMs := 1     
@@ -338,7 +339,8 @@ Detailed RTL Component Info :
 	   3 Input   32 Bit        Muxes := 1     
 	   2 Input   22 Bit        Muxes := 1     
 	  11 Input   16 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 3     
+	   2 Input   16 Bit        Muxes := 2     
+	   3 Input   16 Bit        Muxes := 1     
 	   2 Input   15 Bit        Muxes := 1     
 	   2 Input   12 Bit        Muxes := 3     
 	   2 Input    8 Bit        Muxes := 7     
@@ -351,9 +353,9 @@ Detailed RTL Component Info :
 	   4 Input    3 Bit        Muxes := 2     
 	   4 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 444   
+	   2 Input    1 Bit        Muxes := 443   
 	   4 Input    1 Bit        Muxes := 24    
-	   3 Input    1 Bit        Muxes := 3     
+	   3 Input    1 Bit        Muxes := 1     
 	   5 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -387,7 +389,7 @@ RAM Pipeline Warning: Read Address Register Found For RAM uAHBVGA/uvga_image/uim
 RAM Pipeline Warning: Read Address Register Found For RAM uAHBVGA/uvga_console/uvideo_ram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 RAM Pipeline Warning: Read Address Register Found For RAM uAHBVGA/uvga_image/uimage_ram/ram_reg. We will not be able to pipeline it. This may degrade performance. 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:06 . Memory (MB): peak = 1720.980 ; gain = 268.141
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:46 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -439,13 +441,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:14 . Memory (MB): peak = 1720.980 ; gain = 268.141
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:50 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:01:15 . Memory (MB): peak = 1720.980 ; gain = 268.141
+Finished Timing Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:00:51 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -490,7 +492,7 @@ INFO: [Synth 8-7052] The timing for the instance uAHBVGA/uvga_image/uimage_ram/r
 INFO: [Synth 8-7052] The timing for the instance uAHBVGA/uvga_image/uimage_ram/ram_reg_0_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance uAHBVGA/uvga_console/ufont_rom/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:10 ; elapsed = 00:01:18 . Memory (MB): peak = 1720.980 ; gain = 268.141
+Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:00:52 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -508,37 +510,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
+Finished IO Insertion : Time (s): cpu = 00:00:48 ; elapsed = 00:00:54 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:48 ; elapsed = 00:00:54 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:48 ; elapsed = 00:00:54 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:14 ; elapsed = 00:01:22 . Memory (MB): peak = 1724.488 ; gain = 271.648
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -557,48 +559,48 @@ Report Cell Usage:
 |1     |BUFG     |     2|
 |2     |CARRY4   |    76|
 |3     |DSP48E1  |     3|
-|4     |LUT1     |    99|
-|5     |LUT2     |   351|
-|6     |LUT3     |   290|
-|7     |LUT4     |   373|
-|8     |LUT5     |   725|
-|9     |LUT6     |  1850|
+|4     |LUT1     |   107|
+|5     |LUT2     |   370|
+|6     |LUT3     |   325|
+|7     |LUT4     |   386|
+|8     |LUT5     |   655|
+|9     |LUT6     |  1842|
 |10    |MUXF7    |     5|
 |11    |MUXF8    |     1|
 |12    |RAM32M   |     2|
 |13    |RAM32X1D |     4|
 |14    |RAMB18E1 |     1|
 |15    |RAMB36E1 |    13|
-|21    |FDCE     |   480|
-|22    |FDPE     |    72|
+|21    |FDCE     |   504|
+|22    |FDPE     |    71|
 |23    |FDRE     |   686|
 |24    |FDSE     |    96|
 |25    |IBUF     |    11|
 |26    |OBUF     |    31|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1724.188 ; gain = 272.594
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 243 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:01 ; elapsed = 00:01:21 . Memory (MB): peak = 1724.570 ; gain = 232.203
-Synthesis Optimization Complete : Time (s): cpu = 00:01:15 ; elapsed = 00:01:23 . Memory (MB): peak = 1724.570 ; gain = 271.730
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:53 . Memory (MB): peak = 1724.188 ; gain = 257.453
+Synthesis Optimization Complete : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1724.188 ; gain = 272.594
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 1740.203 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1736.332 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 105 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1749.297 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1745.535 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 6 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
 
-Synth Design complete, checksum: de1fc018
+Synth Design complete, checksum: c5e39c1a
 INFO: [Common 17-83] Releasing license: Synthesis
-94 Infos, 126 Warnings, 0 Critical Warnings and 0 Errors encountered.
+94 Infos, 127 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:18 ; elapsed = 00:01:27 . Memory (MB): peak = 1749.297 ; gain = 296.457
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:58 . Memory (MB): peak = 1745.535 ; gain = 293.941
 INFO: [Common 17-1381] The checkpoint 'C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.runs/synth_1/AHBLITE_SYS.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file AHBLITE_SYS_utilization_synth.rpt -pb AHBLITE_SYS_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat May  2 17:05:49 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon May 11 18:34:36 2026...

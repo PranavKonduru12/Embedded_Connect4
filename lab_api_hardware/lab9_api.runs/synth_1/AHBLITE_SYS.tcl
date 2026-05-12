@@ -90,7 +90,7 @@ read_verilog -library xil_defaultlib {
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB2BRAM.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_7SEG/AHB7SEGDEC.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBDCD.v
-  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_david.V
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBGPIO_interrupt_multiple_switches_Pranav.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHBMUX.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_TIMER/AHBTIMER.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_UART/AHBUART.v
@@ -108,7 +108,7 @@ read_verilog -library xil_defaultlib {
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_console.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_image.v
   C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/lab_api_hardware/lab9_api.srcs/sources_1/imports/FPGA_prev_labs/AHB_VGA/vga_sync.v
-  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/wells_version_top.v
+  C:/LocalWorkspace/EE277A/Embedded_Connect4_PranavBranch/Embedded_Connect4/AHBLITE_SYS_withGPIOIRQ_Pranav.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
