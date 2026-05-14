@@ -76,16 +76,34 @@ void timer_irq_clear(void){
 // GPIO driver function
 //---------------------------------------------
 
-// GPIO read
 
 int GPIO_read(void){
-	GPIO->DIR=0;
-	return GPIO->DATA;
+    GPIO->DIR = 0xFF00;
+    return GPIO->DATA & 0x00FF;
 }
 
-// GPIO write
-
 void GPIO_write(int data){
-	GPIO->DIR=1;
-	GPIO->DATA=data;
+    GPIO->DIR = 0xFF00;
+    GPIO->DATA = (data & 0xFF) << 8;
+}
+
+// Reads the current GPIO switch values from
+// the GPIO data register
+unsigned int read_GPIO(void)
+{
+    return *(volatile unsigned int *)AHB_GPIO_DATA;
+}
+
+// Clears the GPIO interrupt request by writing
+// to the GPIO interrupt clear register
+void gpio_irq_clear(void)
+{
+    *(volatile unsigned int *)AHB_GPIO_IRQ_CLR = 1u;
+}
+
+// Configures GPIO pins as input so switch values
+// can be read by the software
+void gpio_set_input(void)
+{
+    *(volatile unsigned int *)AHB_GPIO_DIR = 0u;
 }

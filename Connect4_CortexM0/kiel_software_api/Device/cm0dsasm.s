@@ -38,6 +38,9 @@ __Vectors		    	DCD		0x00003FFC
         				DCD		0
         				
         				; External Interrupts
+						; IRQ0 -> Timer interrupt
+						; IRQ1 -> UART interrupt
+						; IRQ2 -> GPIO interrupt
 						        				
         				DCD		Timer_Handler
         				DCD		UART_Handler
@@ -81,12 +84,30 @@ UART_Handler    PROC
 				BL UART_ISR
                 POP     {R0,R1,R2,PC}
                 ENDP
-					
+
+;--------------------------------------------------------
+; When a GPIO interrupt occurs, the Cortex-M0
+; jumps here first.
+;
+; The handler saves temporary registers onto the stack,
+; calls the C function GPIO_ISR(), then restores the
+; registers before returning from the interrupt.
+;
+; Actual Connect Four GPIO logic is implemented in C:
+;   - SW0-SW6 : select Connect Four columns
+;   - SW7     : request game reset
+;--------------------------------------------------------					
 GPIO_Handler    PROC
                 EXPORT GPIO_Handler
 				IMPORT GPIO_ISR
+				
+				; Save working registers and return address
                 PUSH    {R0,R1,R2,LR}
+				
+				; Call C GPIO interrupt service routine
 				BL GPIO_ISR
+				
+				; Restore registers and return from interrupt
                 POP     {R0,R1,R2,PC}
                 ENDP					
 

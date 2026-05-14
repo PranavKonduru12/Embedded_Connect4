@@ -409,14 +409,14 @@
               <FilePath>.\Device\edk_driver.h</FilePath>
             </File>
             <File>
-              <FileName>wells version edk_driver.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\wells version edk_driver.c</FilePath>
+              <FileName>cm0dsasm.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Device\cm0dsasm.s</FilePath>
             </File>
             <File>
-              <FileName>cm0dsasm_multiple_inputs_gpio.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\cm0dsasm_multiple_inputs_gpio.s</FilePath>
+              <FileName>edk_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\edk_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -424,9 +424,9 @@
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>main_uart_with_pause_multiple_switches.c</FileName>
+              <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main_uart_with_pause_multiple_switches.c</FilePath>
+              <FilePath>.\Application\main.c</FilePath>
             </File>
           </Files>
         </Group>

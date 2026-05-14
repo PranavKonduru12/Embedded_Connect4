@@ -15,12 +15,19 @@
 #define AHB_VGA_BASE				0x50000000
 #define AHB_UART_BASE				0x51000000
 #define AHB_TIMER_BASE			0x52000000
-//#define AHB_GPIO_BASE				0x53000000
-#define AHB_GPIO_BASE      	0x53000000u //change for multiple switches
+
+// Base address of GPIO peripheral used for
+// switch input, GPIO direction control,
+// and GPIO interrupt clear register
+#define AHB_GPIO_BASE      	0x53000000u 
+
 #define AHB_7SEG_BASE				0x54000000
 #define NVIC_INT_ENABLE			0xE000E100
 
-//change for multiple switches
+// GPIO memory-mapped register addresses
+// DATA : current switch/button values
+// DIR  : GPIO input/output direction
+// IRQ_CLR : clears GPIO interrupt request
 #define AHB_GPIO_DATA      0x53000000u
 #define AHB_GPIO_DIR       0x53000004u
 #define AHB_GPIO_IRQ_CLR   0x5300000Cu
@@ -119,8 +126,14 @@ int GPIO_read(void);						//GPIO read (from switches)
 
 void GPIO_write(int data);			//GPIO write (to LEDs)
 
-//change for multiple switches
+
 //call from edk_driver.c
+
+// Reads current GPIO switch values
 unsigned int read_GPIO(void);
+
+// Clears GPIO interrupt request
 void gpio_irq_clear(void);
+
+// Configures GPIO pins as input
 void gpio_set_input(void);

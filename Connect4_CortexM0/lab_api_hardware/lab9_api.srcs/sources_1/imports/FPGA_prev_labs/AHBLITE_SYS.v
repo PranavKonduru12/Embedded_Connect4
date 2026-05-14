@@ -116,7 +116,9 @@ module AHBLITE_SYS(
     // Interrupt signals
     	wire          uart_irq;
         wire          timer_irq;
-        assign        irq = {30'b0,uart_irq,timer_irq};
+        wire          gpio_irq;    
+        
+        assign        irq = {29'b0,gpio_irq,uart_irq,timer_irq};
     // assign        LED[7] = lockup;
     
 	  // Clock divider, divide the frequency by two, hence less time constraint 
@@ -175,6 +177,10 @@ module AHBLITE_SYS(
     wire          cpu0cdbgpwrupreq;
     wire          cpu0cdbgpwrupack;
     assign        cpu0cdbgpwrupack = cpu0cdbgpwrupreq;
+    
+    //for gpio mapping
+    wire [15:0] gpio_in;
+    wire [15:0] gpio_out;
 
     // DesignStart simplified integration level
     CORTEXM0INTEGRATION u_CORTEXM0INTEGRATION (
@@ -395,7 +401,6 @@ module AHBLITE_SYS(
         .timer_irq(timer_irq)
     );
     
-    // AHBLite GPIO     
     AHBGPIO uAHBGPIO(
         .HCLK(fclk),
         .HRESETn(hresetn),
@@ -405,11 +410,38 @@ module AHBLITE_SYS(
         .HTRANS(htranss),
         .HSEL(hsel_gpio),
         .HREADY(hreadys),
-        .GPIOIN({8'b00000000, sw[7:0]}),
+        .GPIOIN(gpio_in),
         .HREADYOUT(hready_gpio),
         .HRDATA(hrdata_gpio),
-        .GPIOOUT(LED[7:0])
+        .GPIOOUT(gpio_out),
+        .GPIO_IRQ(gpio_irq)
     );
+    
+     
+     
+     /* 
+      * GPIOIN[7:0] mapping
+      * bit0 -> column 1
+      * bit1 -> column 2
+      * ...
+      * bit6 -> column 7
+      * bit7 -> reset
+      *
+      * Reverse playable switches, keep reset on sw7
+      */
+     assign gpio_in[0]  = sw[6];  // leftmost playable switch -> column 1
+     assign gpio_in[1]  = sw[5];
+     assign gpio_in[2]  = sw[4];
+     assign gpio_in[3]  = sw[3];
+     assign gpio_in[4]  = sw[2];
+     assign gpio_in[5]  = sw[1];
+     assign gpio_in[6]  = sw[0];  // rightmost playable switch -> column 7
+     assign gpio_in[7]  = sw[7];  // reset
+     
+     assign gpio_in[15:8] = 8'b00000000;
+     
+     /* LEDs use upper 8 GPIO bits */
+     assign LED[7:0] = gpio_out[15:8];
 
     
 endmodule

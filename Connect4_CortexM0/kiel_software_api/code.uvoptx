@@ -238,24 +238,24 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>6</FileNumber>
-      <FileType>1</FileType>
+      <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\wells version edk_driver.c</PathWithFileName>
-      <FilenameWithoutPath>wells version edk_driver.c</FilenameWithoutPath>
+      <PathWithFileName>.\Device\cm0dsasm.s</PathWithFileName>
+      <FilenameWithoutPath>cm0dsasm.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>7</FileNumber>
-      <FileType>2</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\cm0dsasm_multiple_inputs_gpio.s</PathWithFileName>
-      <FilenameWithoutPath>cm0dsasm_multiple_inputs_gpio.s</FilenameWithoutPath>
+      <PathWithFileName>.\Device\edk_driver.c</PathWithFileName>
+      <FilenameWithoutPath>edk_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -274,8 +274,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\main_uart_with_pause_multiple_switches.c</PathWithFileName>
-      <FilenameWithoutPath>main_uart_with_pause_multiple_switches.c</FilenameWithoutPath>
+      <PathWithFileName>.\Application\main.c</PathWithFileName>
+      <FilenameWithoutPath>main.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -1,3 +1,30 @@
+/*
+ * Connect Four embedded game implementation.
+ *
+ * GPIO switches are used as interrupt-driven gameplay inputs:
+ *   SW0-SW6 select columns 1-7.
+ *   SW7 requests a game reset.
+ *
+ * UART is interrupt-driven for receiving characters, but the actual
+ * name-entry and pause processing is handled in the main loop using
+ * a small receive buffer.
+ *
+ * The timer interrupt controls the 30-second turn countdown and
+ * automatically advances to the next player when time expires.
+ *
+ * VGA displays the board, player names, status, and prompts.
+ * LEDs show game status such as current player, pause, win, or draw.
+ */
+
+/*
+ * Global game state.
+ *
+ * board[][] stores the Connect Four grid.
+ * current_player tracks whose turn it is.
+ * cursor_col stores the currently selected column.
+ * game_over and winner track the end-game state.
+ * game_paused is controlled through the UART spacebar input.
+ */ 
 #include "EDK_CM0.h"
 #include "core_cm0.h"
 #include "edk_driver.h"
@@ -38,7 +65,6 @@
 #define NAME_MAX_LEN        12u
 #define UART_RX_BUF_SIZE    64u
 
-//static volatile uint32_t * const GPIO32      = (volatile uint32_t *)GPIO_BASE_ADDR;
 static volatile uint32_t * const SEG7_DIGIT1 = (volatile uint32_t *)SEG7_DIGIT1_ADDR;
 static volatile uint32_t * const SEG7_DIGIT2 = (volatile uint32_t *)SEG7_DIGIT2_ADDR;
 static volatile uint32_t * const SEG7_DIGIT3 = (volatile uint32_t *)SEG7_DIGIT3_ADDR;
@@ -78,6 +104,15 @@ static void toggle_pause(void);
 //reset flag
 static volatile uint8_t reset_requested = 0;
 
+/*
+ * UART receive buffer and name-entry support.
+ *
+ * UART_ISR only stores incoming characters into a circular buffer.
+ * The main loop later calls process_uart_name_input() to handle
+ * player name entry, backspace, ENTER, and pause control.
+ * This keeps the UART interrupt short and avoids doing printf()
+ * directly inside the interrupt.
+ */
 static void uart_rx_push(uint8_t ch)
 {
     uint8_t next = (uint8_t)((uart_rx_head + 1u) % UART_RX_BUF_SIZE);
@@ -105,6 +140,10 @@ static void uart_puts(const char *s)
     }
 }
 
+/*
+ * Prompts the current player to enter a name.
+ * The prompt is printed to both VGA/printf output and UART/SSH.
+ */
 static void prompt_current_name(void)
 {
     if (name_player == PLAYER1) {
@@ -118,6 +157,7 @@ static void prompt_current_name(void)
 		}
 }
 
+//writing in the player names
 static void finish_one_name(void)
 {
     uint8_t i;
@@ -146,6 +186,13 @@ static void finish_one_name(void)
     }
 }
 
+/*
+ * Processes buffered UART characters.
+ *
+ * During startup, characters are used to enter Player 1 and Player 2 names.
+ * After names are entered, the spacebar toggles pause/resume.
+ * Backspace is handled for both SSH/TeraTerm and VGA text output.
+ */
 static void process_uart_name_input(void)
 {
     uint8_t ch;
@@ -190,20 +237,12 @@ static void process_uart_name_input(void)
     }
 }
 
-
-
-
-
-//static uint8_t read_switches(void)
-//{
-//    return (uint8_t)(GPIO32[0] & 0xFFu);
-//}
-
-//static void gpio_set_all_input(void)
-//{
-//    GPIO32[1] = 0x00000000u;
-//}
-
+/*
+ * 7-segment display support.
+ *
+ * The turn timer value is split into decimal digits and written to the
+ * four 7-segment display registers.
+ */
 static void seg7_show_number(uint16_t value)
 {
     uint8_t d1 = (uint8_t)(value % 10u);
@@ -217,6 +256,10 @@ static void seg7_show_number(uint16_t value)
     *SEG7_DIGIT4 = (uint32_t)d4;
 }
 
+/*
+ * Starts or resets the 30-second turn timer.
+ * Called at game start and whenever the turn changes.
+ */
 static void start_turn_timer(void)
 {
     turn_time_left = TURN_TIME_SEC;
@@ -232,6 +275,13 @@ static void clear_board_array(void)
     }
 }
 
+/*
+ * VGA drawing functions.
+ *
+ * The board is drawn as a 6x7 grid.
+ * Empty cells are black, Player 1 pieces are red, and Player 2 pieces
+ * are green. The cursor color shows whose turn it is.
+ */
 static void draw_cell(int row, int col, int value)
 {
     int x1 = BOARD_X + col * CELL_W;
@@ -266,6 +316,15 @@ static void draw_cursor(void)
     }
 }
 
+/*
+ * Displays current game status and updates LEDs.
+ *
+ * LED0 indicates Player 1's turn.
+ * LED1 indicates Player 2's turn.
+ * 0x55 indicates pause.
+ * 0x0F / 0xF0 indicate Player 1 / Player 2 win.
+ * 0xAA indicates draw.
+ */
 static void draw_status(void)
 {
     if (!game_over) {
@@ -312,6 +371,12 @@ static void draw_board(void)
     draw_cursor();
 }
 
+/*
+ * Core Connect Four game logic.
+ *
+ * drop_piece() places the current player's piece in the lowest available
+ * row of the selected column.
+ */
 static int drop_piece(int col)
 {
     int row;
@@ -344,6 +409,13 @@ static int count_dir(int row, int col, int dr, int dc)
     return count;
 }
 
+/*
+ * Win detection algorithm.
+ *
+ * After a piece is dropped, the program checks four directions:
+ * horizontal, vertical, diagonal down-right, and diagonal down-left.
+ * A player wins when four connected pieces are found.
+ */
 static int check_winner(int row, int col)
 {
     if (1 + count_dir(row, col, 0, 1) + count_dir(row, col, 0, -1) >= 4)
@@ -361,6 +433,12 @@ static int check_winner(int row, int col)
     return 0;
 }
 
+/*
+ * Draw detection.
+ *
+ * The game is a draw if the top row of every column is occupied and
+ * no winner has been found.
+ */
 static int check_draw(void)
 {
     for (c = 0; c < COLS; c++) {
@@ -388,6 +466,12 @@ static void show_game_over(void)
     seg7_show_number(0);
 }
 
+/*
+ * Handles one complete column selection.
+ *
+ * This function drops the piece, redraws the board, checks for win/draw,
+ * and advances to the next player if the game continues.
+ */
 static void handle_drop_column(int col)
 {
     int row;
@@ -431,6 +515,13 @@ static void handle_drop_column(int col)
     draw_board();
 }
 
+/*
+ * Initializes or resets the game.
+ *
+ * This clears the board, resets player and pause state, configures GPIO
+ * as input, clears pending GPIO interrupts, starts the turn timer, and
+ * enables Timer, UART, and GPIO interrupts.
+ */
 static void game_init(void)
 {
     clear_board_array();
@@ -440,9 +531,6 @@ static void game_init(void)
     game_over = 0;
     winner = 0;
     game_paused = 0u;
-
-//    gpio_set_all_input();
-//    last_switch_sample = read_switches();
 	
 		//change for multiple gpio interrupt switches
 		gpio_set_input();
@@ -478,13 +566,6 @@ static void game_init(void)
 
     start_turn_timer();
 
-//    timer_init(Timer_Load_Value_For_One_Sec, Timer_Prescaler, 1);
-//    timer_irq_clear();
-//    timer_enable();
-
-//    NVIC_EnableIRQ(Timer_IRQn);
-//    NVIC_EnableIRQ(UART_IRQn);
-
 		timer_init(Timer_Load_Value_For_One_Sec, Timer_Prescaler, 1);
 		timer_irq_clear();
 		timer_enable();
@@ -507,69 +588,22 @@ static void toggle_pause(void)
     draw_status();
 }
 
-//static void poll_switch_controls(void)
-//{
-//    uint8_t sw = read_switches();
-//    uint8_t rising = (uint8_t)(sw & (uint8_t)(~last_switch_sample));
-
-//    last_switch_sample = sw;
-
-//    if (rising & SW_RESET_MASK) {
-//        game_init();
-//        return;
-//    }
-
-//    if (game_over)
-//        return;
-
-//    if (game_paused)
-//        return;
-
-//    if (rising & SW_COL0_MASK) {
-//        handle_drop_column(0);
-//        return;
-//    }
-
-//    if (rising & SW_COL1_MASK) {
-//        handle_drop_column(1);
-//        return;
-//    }
-
-//    if (rising & SW_COL2_MASK) {
-//        handle_drop_column(2);
-//        return;
-//    }
-
-//    if (rising & SW_COL3_MASK) {
-//        handle_drop_column(3);
-//        return;
-//    }
-
-//    if (rising & SW_COL4_MASK) {
-//        handle_drop_column(4);
-//        return;
-//    }
-
-//    if (rising & SW_COL5_MASK) {
-//        handle_drop_column(5);
-//        return;
-//    }
-
-//    if (rising & SW_COL6_MASK) {
-//        handle_drop_column(6);
-//        return;
-//    }
-//}
-
-//change for multiple switches
+/*
+ * GPIO interrupt service routine.
+ *
+ * GPIO hardware generates an interrupt when a switch turns ON.
+ * SW0-SW6 are mapped to Connect Four columns 1-7.
+ * SW7 requests a reset. The reset is deferred to the main loop using
+ * reset_requested so that game_init() is not called directly inside
+ * the interrupt.
+ */
 void GPIO_ISR(void)
 {
     uint8_t sw;
     uint8_t rising;
 	
-		//changes made to in
+		//Read current switch state from GPIO input register
 
-    //sw = read_switches(); alraedy there with with read_gpio
 		sw = (uint8_t)(read_GPIO() & 0xFFu);
     rising = (uint8_t)(sw & (uint8_t)(~last_switch_sample));
     last_switch_sample = sw;
@@ -577,7 +611,6 @@ void GPIO_ISR(void)
     if (rising & SW_RESET_MASK) {
         gpio_irq_clear();
 				reset_requested = 1;
-        //game_init();
         return;
     }
 
@@ -585,29 +618,6 @@ void GPIO_ISR(void)
         gpio_irq_clear();
         return;
     }
-
-		//hardware already detects rising edge, so not needed in software
-//    if (rising & SW_COL0_MASK) {
-//        handle_drop_column(0);
-//    }
-//    else if (rising & SW_COL1_MASK) {
-//        handle_drop_column(1);
-//    }
-//    else if (rising & SW_COL2_MASK) {
-//        handle_drop_column(2);
-//    }
-//    else if (rising & SW_COL3_MASK) {
-//        handle_drop_column(3);
-//    }
-//    else if (rising & SW_COL4_MASK) {
-//        handle_drop_column(4);
-//    }
-//    else if (rising & SW_COL5_MASK) {
-//        handle_drop_column(5);
-//    }
-//    else if (rising & SW_COL6_MASK) {
-//        handle_drop_column(6);
-//    }
 
     if (sw & SW_COL0_MASK) {
         handle_drop_column(0);
@@ -635,6 +645,12 @@ void GPIO_ISR(void)
     gpio_irq_clear();
 }
 
+/*
+ * UART interrupt service routine.
+ *
+ * Reads one received character from UART and stores it in the receive
+ * buffer. The main loop processes the character later.
+ */
 void UART_ISR(void)
 {
     uint8_t ch;
@@ -643,6 +659,13 @@ void UART_ISR(void)
     uart_rx_push(ch);
 }
 
+/*
+ * Timer interrupt service routine.
+ *
+ * Decrements the current player's turn timer once per second.
+ * If the timer reaches zero, the game automatically switches to the
+ * next player and restarts the turn timer.
+ */
 void Timer_ISR(void)
 {
     if (!game_over && !entering_names && !game_paused) {
@@ -662,19 +685,13 @@ void Timer_ISR(void)
     timer_irq_clear();
 }
 
-//int main(void)
-//{
-//    SoC_init();
-//    game_init();
-
-//    while (1) {
-//        process_uart_name_input();
-
-//        if (!entering_names) {
-//            poll_switch_controls();
-//        }
-//    }
-//}
+/*
+ * Main program loop.
+ *
+ * The game is initialized once, then the CPU repeatedly processes
+ * buffered UART input and handles deferred reset requests. __WFI()
+ * puts the processor to sleep until the next interrupt occurs.
+ */
 int main(void)
 {
     SoC_init();
