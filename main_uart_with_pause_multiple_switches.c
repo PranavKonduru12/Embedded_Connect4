@@ -98,12 +98,24 @@ static int uart_rx_pop(uint8_t *ch)
     return 1;
 }
 
+static void uart_puts(const char *s)
+{
+    while (*s) {
+        UartPutc((unsigned char)*s++);
+    }
+}
+
 static void prompt_current_name(void)
 {
-    if (name_player == PLAYER1)
+    if (name_player == PLAYER1) {
         printf("\nEnter Player 1 name, then press ENTER: ");
-    else
+				uart_puts("\r\nEnter Player 1 name, then press ENTER: ");
+		}
+				
+    else {
         printf("\nEnter Player 2 name, then press ENTER: ");
+				uart_puts("\r\nEnter Player 2 name, then press ENTER: ");
+		}
 }
 
 static void finish_one_name(void)
@@ -153,6 +165,13 @@ static void process_uart_name_input(void)
             if (name_index > 0u) {
                 name_index--;
                 name_temp[name_index] = '\0';
+								
+								/* erase from SSH/TeraTerm */
+                UartPutc('\b');
+                UartPutc(' ');
+                UartPutc('\b');
+								
+								/* erase from VGA/printf output */
                 printf("\b \b");
             }
         } else if (ch >= 32u && ch <= 126u) {
@@ -160,11 +179,20 @@ static void process_uart_name_input(void)
                 name_temp[name_index] = (char)ch;
                 name_index++;
                 name_temp[name_index] = '\0';
+								
+								/* show typed character in SSH/TeraTerm */
+                UartPutc(ch);
+
+                /* show typed character on VGA */
                 printf("%c", ch);
             }
         }
     }
 }
+
+
+
+
 
 //static uint8_t read_switches(void)
 //{
@@ -558,27 +586,51 @@ void GPIO_ISR(void)
         return;
     }
 
-    if (rising & SW_COL0_MASK) {
+		//hardware already detects rising edge, so not needed in software
+//    if (rising & SW_COL0_MASK) {
+//        handle_drop_column(0);
+//    }
+//    else if (rising & SW_COL1_MASK) {
+//        handle_drop_column(1);
+//    }
+//    else if (rising & SW_COL2_MASK) {
+//        handle_drop_column(2);
+//    }
+//    else if (rising & SW_COL3_MASK) {
+//        handle_drop_column(3);
+//    }
+//    else if (rising & SW_COL4_MASK) {
+//        handle_drop_column(4);
+//    }
+//    else if (rising & SW_COL5_MASK) {
+//        handle_drop_column(5);
+//    }
+//    else if (rising & SW_COL6_MASK) {
+//        handle_drop_column(6);
+//    }
+
+    if (sw & SW_COL0_MASK) {
         handle_drop_column(0);
     }
-    else if (rising & SW_COL1_MASK) {
+    else if (sw & SW_COL1_MASK) {
         handle_drop_column(1);
     }
-    else if (rising & SW_COL2_MASK) {
+    else if (sw & SW_COL2_MASK) {
         handle_drop_column(2);
     }
-    else if (rising & SW_COL3_MASK) {
+    else if (sw & SW_COL3_MASK) {
         handle_drop_column(3);
     }
-    else if (rising & SW_COL4_MASK) {
+    else if (sw & SW_COL4_MASK) {
         handle_drop_column(4);
     }
-    else if (rising & SW_COL5_MASK) {
+    else if (sw & SW_COL5_MASK) {
         handle_drop_column(5);
     }
-    else if (rising & SW_COL6_MASK) {
+    else if (sw & SW_COL6_MASK) {
         handle_drop_column(6);
     }
+	
 
     gpio_irq_clear();
 }
