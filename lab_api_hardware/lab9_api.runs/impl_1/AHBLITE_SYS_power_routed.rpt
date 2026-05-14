@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-| Date             : Mon May 11 18:36:02 2026
+| Date             : Wed May 13 21:37:26 2026
 | Host             : Asus_Pranav running 64-bit major release  (build 9200)
 | Command          : report_power -file AHBLITE_SYS_power_routed.rpt -pb AHBLITE_SYS_power_summary_routed.pb -rpx AHBLITE_SYS_power_routed.rpx
 | Design           : AHBLITE_SYS
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.150        |
+| Total On-Chip Power (W)  | 0.151        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.053        |
@@ -53,20 +53,20 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        3 |       --- |             --- |
-| Slice Logic              |     0.008 |     5180 |       --- |             --- |
-|   LUT as Logic           |     0.008 |     3148 |     63400 |            4.97 |
+| Slice Logic              |     0.008 |     5168 |       --- |             --- |
+|   LUT as Logic           |     0.008 |     3147 |     63400 |            4.96 |
 |   CARRY4                 |    <0.001 |       76 |     15850 |            0.48 |
 |   Register               |    <0.001 |     1357 |    126800 |            1.07 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   LUT as Distributed RAM |    <0.001 |       12 |     19000 |            0.06 |
 |   F7/F8 Muxes            |    <0.001 |        6 |     63400 |           <0.01 |
 |   Others                 |     0.000 |       46 |       --- |             --- |
-| Signals                  |     0.013 |     4903 |       --- |             --- |
-| Block RAM                |     0.020 |     13.5 |       135 |           10.00 |
+| Signals                  |     0.013 |     4896 |       --- |             --- |
+| Block RAM                |     0.019 |     13.5 |       135 |           10.00 |
 | DSPs                     |    <0.001 |        3 |       240 |            1.25 |
-| I/O                      |     0.011 |       42 |       210 |           20.00 |
+| I/O                      |     0.012 |       42 |       210 |           20.00 |
 | Static Power             |     0.098 |          |           |                 |
-| Total                    |     0.150 |          |           |                 |
+| Total                    |     0.151 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -150,7 +150,7 @@ Table of Contents
 |   uAHBVGA               |     0.017 |
 |     uvga_console        |     0.003 |
 |       uvideo_ram        |     0.002 |
-|     uvga_image          |     0.013 |
+|     uvga_image          |     0.014 |
 |       uimage_ram        |     0.013 |
 |   u_CORTEXM0INTEGRATION |     0.016 |
 |     u_logic             |     0.016 |
