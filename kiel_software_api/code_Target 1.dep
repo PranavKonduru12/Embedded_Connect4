@@ -34,7 +34,7 @@ I (.\Core\core_cmInstr.h)(0x69FD4360)
 I (.\Core\core_cmFunc.h)(0x69FD4360)
 I (.\Device\edk_api.h)(0x69FD4360)
 F (..\cm0dsasm_multiple_inputs_gpio.s)(0x6A027FDE)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-ID:\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Arm\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include--pd "__UVISION_VERSION SETA 535" --pd "_RTE_ SETA 1" --pd "ARMCM0 SETA 1" --pd "_RTE_ SETA 1"--list .\cm0dsasm_multiple_inputs_gpio.lst --xref -o .\cm0dsasm_multiple_inputs_gpio.o --depend .\cm0dsasm_multiple_inputs_gpio.d)
-F (..\main_uart_with_pause_multiple_switches.c)(0x6A027493)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I .\Application -I .\Core -I .\Device-I.\RTE\_Target_1-ID:\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Arm\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM0 -D_RTE_-o .\main_uart_with_pause_multiple_switches.o --omf_browse .\main_uart_with_pause_multiple_switches.crf --depend .\main_uart_with_pause_multiple_switches.d)
+F (..\main_uart_with_pause_multiple_switches.c)(0x6A05572D)(-c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork -I .\Application -I .\Core -I .\Device-I.\RTE\_Target_1-ID:\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-ID:\Arm\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="535" -D_RTE_ -DARMCM0 -D_RTE_-o .\main_uart_with_pause_multiple_switches.o --omf_browse .\main_uart_with_pause_multiple_switches.crf --depend .\main_uart_with_pause_multiple_switches.d)
 I (.\Device\EDK_CM0.h)(0x6A027BF9)
 I (.\Core\core_cm0.h)(0x69FD4360)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6026047E)
