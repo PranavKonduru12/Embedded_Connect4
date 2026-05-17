@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command=".planAhead." Owner="pskon" Host="ASUS_PRANAV" Pid="42560">
-    </Process>
-</ProcessHandle>
